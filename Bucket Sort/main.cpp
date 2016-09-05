@@ -12,22 +12,6 @@
 
 using namespace::std;
 
-// 插入排序
-void InsertionSort(vector<double> &a) {
-    for (vector<double>::size_type j = 1; j != a.size(); ++j) {
-        double key = a[j];
-        
-        int i = static_cast<int>(j) - 1;
-        
-        while (i >= 0 && a[i] > key) {
-            a[i + 1] = a[i];
-            --i;
-        }
-        
-        a[i + 1] = key;
-    }
-}
-
 // 插入排序（使用迭代器）
 void InsertionSort(vector<vector<double> *>::iterator iter) {
     for (vector<double>::iterator iter_j = (*iter)->begin(); iter_j != (*iter)->end(); ++iter_j) {
@@ -72,16 +56,6 @@ void BucketSort(vector<double> &a) {
         }
     }
     
-    // 下面是不使用迭代器版的桶排序
-//    for (vector<vector<double> *>::size_type i = 0; i != B.size(); ++i) {
-//        if (B[i]->size() > 0) {
-//            InsertionSort(*B[i]);
-//            
-//            a.insert(iter_a, B[i]->begin(), B[i]->end());
-//            iter_a = a.end();
-//        }
-//    }
-    
     for (vector<vector<double> *>::iterator iter = B.begin(); iter != B.end(); ++iter) {
         delete *iter;
     }
@@ -90,9 +64,6 @@ void BucketSort(vector<double> &a) {
 int main(int argc, const char * argv[]) {
     vector<double> a{0.78, 0.17, 0.39, 0.23, 0.72, 0.94, 0.21, 0.12, 0.26, 0.68};
     vector<double> b{0.79, 0.13, 0.16, 0.64, 0.39, 0.20, 0.89, 0.53, 0.71, 0.42};
-    
-//    vector<double>::iterator iter = a.begin();
-//    --iter;
 
     BucketSort(a);
     
