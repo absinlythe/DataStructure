@@ -147,18 +147,12 @@ int main(int argc, const char * argv[]) {
     BucketSort2(a);
     
     printf("排序：\n");
-    for (vector<double>::const_iterator iter = a.cbegin(); iter != a.cend(); ++iter) {
-        printf("%f ", *iter);
-    }
-    printf("\n");
+    printVector(a);
     
     BucketSort2(b, true, 20);
     
     printf("排序：\n");
-    for (vector<double>::const_iterator iter = b.cbegin(); iter != b.cend(); ++iter) {
-        printf("%f ", *iter);
-    }
-    printf("\n");
+    printVector(b);
     
     return 0;
 }
