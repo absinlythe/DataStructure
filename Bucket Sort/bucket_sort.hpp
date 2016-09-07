@@ -1,0 +1,100 @@
+//
+//  bucket_sort.hpp
+//  Bucket Sort
+//
+//  Created by zhengzhenyu on 16/9/7.
+//  Copyright © 2016年 郑振宇. All rights reserved.
+//
+
+#ifndef bucket_sort_hpp
+#define bucket_sort_hpp
+
+#include <vector>
+
+#include "utils.hpp"
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+// 插入排序（使用迭代器）
+template <typename T>
+void InsertionSort(typename std::vector<std::vector<T> >::iterator &iter) {
+    if (iter->size() <= 1) return;
+    
+    for (typename std::vector<T>::iterator iter_j = (*iter).begin() + 1; iter_j != (*iter).end(); ++iter_j) {
+        T key = *iter_j;
+        typename std::vector<T>::iterator iter_i = iter_j - 1;
+        bool flag = true;
+        
+        while (iter_i >= (*iter).begin() && *iter_i > key) {
+            *(iter_i + 1) = *iter_i;
+            
+            if (iter_i == (*iter).begin()) {
+                *iter_i = key;
+                flag = false;
+                break;
+            }
+            --iter_i;
+        }
+        
+        if (flag) {
+            *(iter_i + 1) = key;
+        }
+    }
+}
+
+// 桶排序
+// a: 待排序数组
+// reverse: 是否降序
+// bucket_num: 桶数
+template <typename T>
+void BucketSort(std::vector<T> &a, const bool reverse = false, const int bucket_num = 10) {
+    if (bucket_num < 1) return;
+    
+    // 只小于两个元素
+    if (a.size() <= 1) return;
+    
+    // 只有两个元素
+    if (a.size() == 2) {
+        if ((reverse == false && a[0] > a[1]) || (reverse == true && a[0] < a[1])) {
+            std::swap(a[0], a[1]);
+        }
+        return;
+    }
+    
+    std::vector<std::vector<T> > B;
+    
+    // 建桶
+    for (typename std::vector<T>::size_type i = 0; i != bucket_num; ++i) {
+        B.push_back(std::vector<T>());
+    }
+    
+    // 往桶中填充数据
+    std::pair<T, T> max_min = GetMaxMin(a);
+    T step = (max_min.second - max_min.first) / bucket_num;
+    for (typename std::vector<T>::size_type i = 0; i != a.size(); ++i) {
+        int index = static_cast<int>((a[i] - max_min.first) / step);
+        if (index >= bucket_num) index = bucket_num - 1;
+        
+        B[index].push_back(a[i]);
+    }
+    
+    a.clear();
+    typename std::vector<T>::iterator iter_a = a.begin();
+    
+    // 下面是使用迭代器版的桶排序
+    for (typename std::vector<std::vector<T> >::iterator iter = B.begin(); iter != B.end(); ++iter) {
+        if ((*iter).size() > 0) {
+            if ((*iter).size() > 1) {
+                InsertionSort<T>(iter);
+            }
+            
+            a.insert(iter_a, (*iter).begin(), (*iter).end());
+            iter_a = a.end();
+        }
+    }
+    
+    if (reverse) {
+        VectorReverse(a);
+    }
+}
+
+#endif /* bucket_sort_hpp */
