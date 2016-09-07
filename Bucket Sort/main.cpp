@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include <ctime>
+#include <cstdlib>
 #include <vector>
 
 #include "utils.hpp"
@@ -21,8 +22,8 @@ int main(int argc, const char * argv[]) {
     vector<double> b;
     vector<int> c;
     vector<int> d;
-    const int length = 50000;
-    
+    const int length = 100000;
+	
     srand(static_cast<unsigned>(time(0)));
     for (int i = 0; i != length; ++i) {
         a.push_back((rand() % 10000) / 10000.0 - 0.5);
