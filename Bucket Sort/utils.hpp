@@ -10,6 +10,7 @@
 #define utils_hpp
 
 #include <vector>
+#include <utility>
 #include <iostream>
 
 // 打印数列
@@ -23,7 +24,7 @@ void PrintVector(std::vector<T> &a) {
 
 // 获取数列的最大值和最小值
 template <typename T>
-std::pair<T, T> GetMaxMin(std::vector<T> &a) {
+const std::pair<T, T> GetMaxMin(std::vector<T> &a) {
     if (a.empty()) return std::make_pair(0, 0);
     if (a.size() == 1) return std::make_pair(a[0], a[0]);
     

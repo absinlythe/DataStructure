@@ -17,7 +17,7 @@
 /////////////////////////////////////////////////////////////////////////////////////////////
 // 插入排序
 template <typename T>
-void InsertionSort(typename std::vector<T> *iter) {
+void InsertionSort(std::vector<T> *iter) {
     if (iter->size() <= 1) return;
     
     for (typename std::vector<T>::iterator iter_j = iter->begin() + 1; iter_j != iter->end(); ++iter_j) {
@@ -166,11 +166,11 @@ void ThreadBucketSort(std::vector<T> &a, const bool reverse = false, const int b
     }
     
     // 构造线程
-//    std::vector<std::thread *> threads;
     for (int i = 0; i != thread_num; ++i) {
+        // TODO: 新建线程
 //        InsertionSortThread<T>(B_thread[i]);
-        std::thread t = std::thread(InsertionSortThread<T>, B_thread[i]);
-        t.join();
+//        std::thread t (InsertionSortThread<T>, B_thread[i]);
+//        t.join();
     }
     
     // 是否要逆序排列
