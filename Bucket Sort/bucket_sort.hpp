@@ -21,23 +21,15 @@ void InsertionSort(typename std::vector<std::vector<T> >::iterator &iter) {
     
     for (typename std::vector<T>::iterator iter_j = (*iter).begin() + 1; iter_j != (*iter).end(); ++iter_j) {
         T key = *iter_j;
-        typename std::vector<T>::iterator iter_i = iter_j - 1;
-        bool flag = true;
-        
-        while (iter_i >= (*iter).begin() && *iter_i > key) {
-            *(iter_i + 1) = *iter_i;
+        typename std::vector<T>::iterator iter_i = iter_j;
+
+        while (iter_i > (*iter).begin() && *(iter_i - 1) > key) {
+            *iter_i = *(iter_i - 1);
             
-            if (iter_i == (*iter).begin()) {
-                *iter_i = key;
-                flag = false;
-                break;
-            }
             --iter_i;
         }
         
-        if (flag) {
-            *(iter_i + 1) = key;
-        }
+        *iter_i = key;
     }
 }
 
@@ -81,7 +73,7 @@ void BucketSort(std::vector<T> &a, const bool reverse = false, const int bucket_
     a.clear();
     typename std::vector<T>::iterator iter_a = a.begin();
     
-    // 下面是使用迭代器版的桶排序
+    // 对每个桶进行插入排序
     for (typename std::vector<std::vector<T> >::iterator iter = B.begin(); iter != B.end(); ++iter) {
         if ((*iter).size() > 0) {
             if ((*iter).size() > 1) {
