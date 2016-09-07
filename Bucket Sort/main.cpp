@@ -21,7 +21,7 @@ int main(int argc, const char * argv[]) {
     vector<double> b;
     vector<int> c;
     vector<int> d;
-    const int length = 500000;
+    const int length = 5000;
     
     srand(static_cast<unsigned>(time(0)));
     for (int i = 0; i != length; ++i) {

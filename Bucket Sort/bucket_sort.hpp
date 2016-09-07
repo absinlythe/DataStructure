@@ -41,7 +41,8 @@ void InsertionSort(typename std::vector<std::vector<T> >::iterator &iter) {
     }
 }
 
-// 桶排序
+// 桶排序算法
+//
 // a: 待排序数组
 // reverse: 是否降序
 // bucket_num: 桶数
@@ -49,7 +50,7 @@ template <typename T>
 void BucketSort(std::vector<T> &a, const bool reverse = false, const int bucket_num = 10) {
     if (bucket_num < 1) return;
     
-    // 只小于两个元素
+    // 小于两个元素
     if (a.size() <= 1) return;
     
     // 只有两个元素
@@ -60,9 +61,8 @@ void BucketSort(std::vector<T> &a, const bool reverse = false, const int bucket_
         return;
     }
     
-    std::vector<std::vector<T> > B;
-    
     // 建桶
+    std::vector<std::vector<T> > B;
     for (typename std::vector<T>::size_type i = 0; i != bucket_num; ++i) {
         B.push_back(std::vector<T>());
     }
@@ -77,6 +77,7 @@ void BucketSort(std::vector<T> &a, const bool reverse = false, const int bucket_
         B[index].push_back(a[i]);
     }
     
+    // 初始化
     a.clear();
     typename std::vector<T>::iterator iter_a = a.begin();
     
@@ -92,6 +93,7 @@ void BucketSort(std::vector<T> &a, const bool reverse = false, const int bucket_
         }
     }
     
+    // 是否要逆序排列
     if (reverse) {
         VectorReverse(a);
     }
