@@ -61,12 +61,13 @@ void ThreadBucketSort(std::vector<T> &a, const bool reverse = false, const int b
     
     // 初始化
     a.clear();
+    typename std::vector<T>::iterator iter_a = a.begin();
     
-#ifdef _MSC_VER  //多线程版本暂时只能用于VC编译器
+#ifndef _MSC_VER  // 多线程版本暂时只能用于VC编译器
 	// 构造线程
-	vector<std::thread> t;
-	std::vector<std::vector<T> >::iterator thread_iter = B.begin();
-	std::vector<std::vector<T> >::size_type thread_step = bucket_num / thread_num;
+    std::vector<std::thread> t;
+	typename std::vector<std::vector<T> >::iterator thread_iter = B.begin();
+	typename std::vector<std::vector<T> >::size_type thread_step = bucket_num / thread_num;
 	for (int i = 0; i != thread_num - 1; ++i) {
 		t.push_back(std::thread(InsertionSortThread<T>, thread_iter, thread_iter + thread_step));
 		thread_iter += thread_step;
@@ -86,7 +87,6 @@ void ThreadBucketSort(std::vector<T> &a, const bool reverse = false, const int b
 #else
 	// 退化为单线程版本
     // 对每个桶进行插入排序
-    typename std::vector<T>::iterator iter_a = a.begin();
     for (typename std::vector<std::vector<T> >::iterator iter = B.begin(); iter != B.end(); ++iter) {
         if ((*iter).size() > 0) {
             if ((*iter).size() > 1) {
