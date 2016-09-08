@@ -23,6 +23,13 @@ void InsertionSortThread(std::vector<std::vector<T> *> &b) {
     }
 }
 
+template <typename T>
+void InsertionSortThread(typename std::vector<std::vector<T> *>::iterator begin, typename std::vector<std::vector<T> *>::iterator end) {
+    for (typename std::vector<std::vector<T> *>::iterator iter = begin; iter <= end; ++iter) {
+        InsertionSort<T>(*iter);
+    }
+}
+
 // 桶排序算法（多线程）
 //
 // a: 待排序数组
@@ -31,7 +38,7 @@ void InsertionSortThread(std::vector<std::vector<T> *> &b) {
 // thread_num: 线程数
 template <typename T>
 void ThreadBucketSort(std::vector<T> &a, const bool reverse = false, const int bucket_num = 10, const int thread_num = 5) {
-    if (bucket_num < 1) return;
+    if (bucket_num < 1 || thread_num < 1) return;
     
     // 小于两个元素
     if (a.size() <= 1) return;
@@ -50,11 +57,6 @@ void ThreadBucketSort(std::vector<T> &a, const bool reverse = false, const int b
         B.push_back(std::vector<T>());
     }
     
-    //    for (int i = 0; i != thread_num; ++i) {
-    //        std::thread t;
-    //        threads.push_back(&t);
-    //    }
-    
     // 往桶中填充数据
     std::pair<T, T> max_min = GetMaxMin(a);
     T step = (max_min.second - max_min.first) / bucket_num;
@@ -71,7 +73,7 @@ void ThreadBucketSort(std::vector<T> &a, const bool reverse = false, const int b
         B_thread[i % thread_num].push_back(&B[i]);
     }
     
-#ifdef _MSC_VER  //暂时只能用于VC编译器
+#ifdef _MSC_VER  //多线程版本暂时只能用于VC编译器
 	// 构造线程
 	vector<std::thread> t;
 	for (int i = 0; i != thread_num; ++i) {
