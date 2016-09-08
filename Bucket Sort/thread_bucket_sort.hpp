@@ -65,37 +65,36 @@ void ThreadBucketSort(std::vector<T> &a, const bool reverse = false, const int b
         B[index].push_back(a[i]);
     }
     
-    // 初始化
-    a.clear();
-    //    typename std::vector<T>::iterator iter_a = a.begin();
-    //    int thread_index = 0;
-    
-    // 对每个桶进行插入排序
-    //    for (typename std::vector<std::vector<T> >::iterator iter = B.begin(); iter != B.end(); ++iter) {
-    //        if ((*iter).size() > 0) {
-    //            if ((*iter).size() > 1) {
-    //                InsertionSort<T>(iter);
-    //                ++thread_index;
-    //            }
-    //
-    //            a.insert(iter_a, (*iter).begin(), (*iter).end());
-    //            iter_a = a.end();
-    //        }
-    //    }
-    
     // 为每个线程分配数据
     std::vector<std::vector<std::vector<T> *> > B_thread(thread_num, std::vector<std::vector<T> *>());
     for (typename std::vector<std::vector<T> >::size_type i = 0; i != B.size(); ++i) {
         B_thread[i % thread_num].push_back(&B[i]);
     }
     
-    // 构造线程
-    for (int i = 0; i != thread_num; ++i) {
-        // TODO: 新建线程
-        //        InsertionSortThread<T>(B_thread[i]);
-        //        std::thread t (InsertionSortThread<T>, B_thread[i]);
-        //        t.join();
-    }
+#ifdef _MSC_VER  //暂时只能用于VC编译器
+	// 构造线程
+	vector<std::thread> t;
+	for (int i = 0; i != thread_num; ++i) {
+		t.push_back(std::thread(InsertionSortThread<T>, B_thread[i]));
+	}
+
+	for (int i = 0; i != thread_num; ++i) {
+		t[i].join();
+	}
+#else
+	// 退化为单线程版本
+	for (int i = 0; i != thread_num; ++i) {
+		InsertionSortThread<T>(B_thread[i]);
+	}
+#endif // _MSC_VER
+
+	// 数据填充
+	a.clear();
+	for (typename std::vector<std::vector<T> >::iterator iter = B.begin(); iter != B.end(); ++iter) {
+		if ((*iter).size() > 0) {
+			a.insert(a.end(), (*iter).begin(), (*iter).end());
+		}
+	}
     
     // 是否要逆序排列
     if (reverse) {

@@ -22,7 +22,7 @@ int main(int argc, const char * argv[]) {
     vector<double> a;
     vector<double> b;
     vector<int> c;
-    const int length = 200000;
+    const int length = 100000;
     
     srand(static_cast<unsigned>(time(0)));
     for (int i = 0; i != length; ++i) {
@@ -45,7 +45,7 @@ int main(int argc, const char * argv[]) {
 //    PrintVector(b);
     cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
     cout << SortCheck(b, true) << endl;
-    
+
     st = clock();
     BucketSort(c, true, 10000);
 //    PrintVector(c);
@@ -59,10 +59,14 @@ int main(int argc, const char * argv[]) {
     cout << SortCheck(d, true) << endl;
     
     st = clock();
-    ThreadBucketSort(e, true, 1000);
+    ThreadBucketSort(e, true, 1000, 2);
 //    PrintVector(d);
     cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
     cout << SortCheck(e, true) << endl;
     
+#ifdef _MSC_VER
+	system("pause");
+#endif // _MSC_VER
+
     return 0;
 }
