@@ -15,18 +15,10 @@
 #include "insert_sort.hpp"
 #include "utils.hpp"
 
-// 插入排序，用于多线程桶排序
 template <typename T>
-void InsertionSortThread(std::vector<std::vector<T> *> &b) {
-    for (typename std::vector<std::vector<T> *>::iterator iter = b.begin(); iter != b.end(); ++iter) {
-        InsertionSort<T>(*iter);
-    }
-}
-
-template <typename T>
-void InsertionSortThread(typename std::vector<std::vector<T> *>::iterator begin, typename std::vector<std::vector<T> *>::iterator end) {
-    for (typename std::vector<std::vector<T> *>::iterator iter = begin; iter <= end; ++iter) {
-        InsertionSort<T>(*iter);
+void InsertionSortThread(typename std::vector<std::vector<T>>::iterator begin, typename std::vector<std::vector<T>>::iterator end) {
+    for (typename std::vector<std::vector<T>>::iterator iter = begin; iter != end; ++iter) {
+		InsertionSort<T>(&(*iter));
     }
 }
 
@@ -67,18 +59,16 @@ void ThreadBucketSort(std::vector<T> &a, const bool reverse = false, const int b
         B[index].push_back(a[i]);
     }
     
-    // 为每个线程分配数据
-    std::vector<std::vector<std::vector<T> *> > B_thread(thread_num, std::vector<std::vector<T> *>());
-    for (typename std::vector<std::vector<T> >::size_type i = 0; i != B.size(); ++i) {
-        B_thread[i % thread_num].push_back(&B[i]);
-    }
-    
 #ifdef _MSC_VER  //多线程版本暂时只能用于VC编译器
 	// 构造线程
 	vector<std::thread> t;
-	for (int i = 0; i != thread_num; ++i) {
-		t.push_back(std::thread(InsertionSortThread<T>, B_thread[i]));
+	std::vector<std::vector<T> >::iterator thread_iter = B.begin();
+	std::vector<std::vector<T> >::size_type thread_step = bucket_num / thread_num;
+	for (int i = 0; i != thread_num - 1; ++i) {
+		t.push_back(std::thread(InsertionSortThread<T>, thread_iter, thread_iter + thread_step));
+		thread_iter += thread_step;
 	}
+	t.push_back(std::thread(InsertionSortThread<T>, thread_iter, B.end()));
 
 	for (int i = 0; i != thread_num; ++i) {
 		t[i].join();
