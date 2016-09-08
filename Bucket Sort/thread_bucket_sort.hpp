@@ -16,7 +16,7 @@
 #include "utils.hpp"
 
 template <typename T>
-void InsertionSortThread(typename std::vector<std::vector<T>>::iterator begin, typename std::vector<std::vector<T>>::iterator end) {
+void InsertionSortThread(typename std::vector<std::vector<T>>::iterator &begin, typename std::vector<std::vector<T>>::iterator &end) {
     for (typename std::vector<std::vector<T>>::iterator iter = begin; iter != end; ++iter) {
 		InsertionSort<T>(&(*iter));
     }
