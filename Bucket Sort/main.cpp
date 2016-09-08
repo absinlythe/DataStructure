@@ -22,7 +22,7 @@ int main(int argc, const char * argv[]) {
     vector<double> a;
     vector<double> b;
     vector<int> c;
-    const int length = 100000;
+    const int length = 1000000;
     
     srand(static_cast<unsigned>(time(0)));
     for (int i = 0; i != length; ++i) {

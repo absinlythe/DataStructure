@@ -59,6 +59,9 @@ void ThreadBucketSort(std::vector<T> &a, const bool reverse = false, const int b
         B[index].push_back(a[i]);
     }
     
+    // 初始化
+    a.clear();
+    
 #ifdef _MSC_VER  //多线程版本暂时只能用于VC编译器
 	// 构造线程
 	vector<std::thread> t;
@@ -73,24 +76,28 @@ void ThreadBucketSort(std::vector<T> &a, const bool reverse = false, const int b
 	for (int i = 0; i != thread_num; ++i) {
 		t[i].join();
 	}
+    
+    for (typename std::vector<std::vector<T> >::iterator iter = B.begin(); iter != B.end(); ++iter) {
+        if ((*iter).size() > 0) {
+            a.insert(iter_a, (*iter).begin(), (*iter).end());
+            iter_a = a.end();
+        }
+    }
 #else
 	// 退化为单线程版本
+    // 对每个桶进行插入排序
+    typename std::vector<T>::iterator iter_a = a.begin();
     for (typename std::vector<std::vector<T> >::iterator iter = B.begin(); iter != B.end(); ++iter) {
         if ((*iter).size() > 0) {
             if ((*iter).size() > 1) {
                 InsertionSort<T>(&(*iter));
             }
+            
+            a.insert(iter_a, (*iter).begin(), (*iter).end());
+            iter_a = a.end();
         }
     }
 #endif // _MSC_VER
-
-	// 数据填充
-	a.clear();
-	for (typename std::vector<std::vector<T> >::iterator iter = B.begin(); iter != B.end(); ++iter) {
-		if ((*iter).size() > 0) {
-			a.insert(a.end(), (*iter).begin(), (*iter).end());
-		}
-	}
     
     // 是否要逆序排列
     if (reverse) {
