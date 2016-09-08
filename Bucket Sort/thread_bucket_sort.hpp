@@ -75,9 +75,13 @@ void ThreadBucketSort(std::vector<T> &a, const bool reverse = false, const int b
 	}
 #else
 	// 退化为单线程版本
-	for (int i = 0; i != thread_num; ++i) {
-		InsertionSortThread<T>(B_thread[i]);
-	}
+    for (typename std::vector<std::vector<T> >::iterator iter = B.begin(); iter != B.end(); ++iter) {
+        if ((*iter).size() > 0) {
+            if ((*iter).size() > 1) {
+                InsertionSort<T>(&(*iter));
+            }
+        }
+    }
 #endif // _MSC_VER
 
 	// 数据填充
