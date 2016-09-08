@@ -12,7 +12,7 @@
 // 插入排序
 template <typename T>
 void InsertionSort(std::vector<T> *iter) {
-    if (iter->size() <= 1) return;
+    if (!iter || iter->size() <= 1) return;
     
     for (typename std::vector<T>::iterator iter_j = iter->begin() + 1; iter_j != iter->end(); ++iter_j) {
         T key = *iter_j;

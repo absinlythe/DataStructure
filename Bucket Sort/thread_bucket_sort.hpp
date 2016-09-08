@@ -15,12 +15,23 @@
 #include "insert_sort.hpp"
 #include "utils.hpp"
 
+#ifdef _MSC_VER
 template <typename T>
 void InsertionSortThread(typename std::vector<std::vector<T>>::iterator &begin, typename std::vector<std::vector<T>>::iterator &end) {
     for (typename std::vector<std::vector<T>>::iterator iter = begin; iter != end; ++iter) {
 		InsertionSort<T>(&(*iter));
     }
 }
+#else
+template <typename T>
+void InsertionSortThread(typename std::vector<std::vector<T>>::iterator *begin, typename std::vector<std::vector<T>>::iterator *end) {
+    for (typename std::vector<std::vector<T>>::iterator *iter = begin; *iter != *end; ++(*iter)) {
+        if ((*iter)->size() > 1) {
+            InsertionSort<T>(&(**iter));
+        }
+    }
+}
+#endif
 
 // 桶排序算法（多线程）
 //
@@ -63,7 +74,7 @@ void ThreadBucketSort(std::vector<T> &a, const bool reverse = false, const int b
     a.clear();
     typename std::vector<T>::iterator iter_a = a.begin();
     
-#ifndef _MSC_VER  // 多线程版本暂时只能用于VC编译器
+#ifdef _MSC_VER  // 多线程版本暂时只能用于VC编译器
 	// 构造线程
     std::vector<std::thread> t;
 	typename std::vector<std::vector<T> >::iterator thread_iter = B.begin();
@@ -85,18 +96,31 @@ void ThreadBucketSort(std::vector<T> &a, const bool reverse = false, const int b
         }
     }
 #else
-	// 退化为单线程版本
-    // 对每个桶进行插入排序
+    // 构造线程
+    typename std::vector<std::vector<T> >::size_type thread_step = bucket_num / thread_num, offset = 0;
+    std::vector<typename std::vector<std::vector<T> >::iterator> thread_steps;
+    for (int i = 0; i != thread_num; ++i) {
+        thread_steps.push_back(B.begin() + offset);
+        offset += thread_step;
+    }
+    thread_steps.push_back(B.end());
+    
+    std::vector<std::thread> t;
+    for (int i = 0; i != thread_num; ++i) {
+        t.push_back(std::thread(InsertionSortThread<T>, &thread_steps[i], &thread_steps[i + 1]));
+    }
+    
+    for (int i = 0; i != thread_num; ++i) {
+        t[i].join();
+    }
+    
     for (typename std::vector<std::vector<T> >::iterator iter = B.begin(); iter != B.end(); ++iter) {
         if ((*iter).size() > 0) {
-            if ((*iter).size() > 1) {
-                InsertionSort<T>(&(*iter));
-            }
-            
             a.insert(iter_a, (*iter).begin(), (*iter).end());
             iter_a = a.end();
         }
     }
+
 #endif // _MSC_VER
     
     // 是否要逆序排列
