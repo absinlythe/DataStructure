@@ -14,6 +14,7 @@
 
 #include "utils.hpp"
 #include "bucket_sort.hpp"
+#include "thread_bucket_sort.hpp"
 
 using namespace::std;
 
