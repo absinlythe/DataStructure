@@ -23,13 +23,17 @@ void InsertionSortThread(typename std::vector<std::vector<T>>::iterator &begin, 
     }
 }
 #else
+std::mutex my_lock;
 template <typename T>
 void InsertionSortThread(typename std::vector<std::vector<T>>::iterator *begin, typename std::vector<std::vector<T>>::iterator *end) {
-    for (typename std::vector<std::vector<T>>::iterator *iter = begin; *iter != *end; ++(*iter)) {
-        if ((*iter)->size() > 1) {
-            InsertionSort<T>(&(**iter));
+    typename std::vector<std::vector<T>>::size_type all = *end - *begin;
+    for (typename std::vector<std::vector<T>>::size_type i = 0; i!= all; ++i) {
+        std::vector<T> *iter = &*(*begin + i);
+        if (iter->size() > 1) {
+            InsertionSort<T>(iter);
         }
     }
+
 }
 #endif
 
@@ -73,31 +77,20 @@ void ThreadBucketSort(std::vector<T> &a, const bool reverse = false, const int b
     // 初始化
     a.clear();
     typename std::vector<T>::iterator iter_a = a.begin();
-    
-#ifdef _MSC_VER  // 多线程版本暂时只能用于VC编译器
-	// 构造线程
     std::vector<std::thread> t;
+    typename std::vector<std::vector<T> >::size_type thread_step = bucket_num / thread_num;
+    
+#ifdef _MSC_VER  
+    // 构造线程
 	typename std::vector<std::vector<T> >::iterator thread_iter = B.begin();
-	typename std::vector<std::vector<T> >::size_type thread_step = bucket_num / thread_num;
 	for (int i = 0; i != thread_num - 1; ++i) {
 		t.push_back(std::thread(InsertionSortThread<T>, thread_iter, thread_iter + thread_step));
 		thread_iter += thread_step;
 	}
 	t.push_back(std::thread(InsertionSortThread<T>, thread_iter, B.end()));
-
-	for (int i = 0; i != thread_num; ++i) {
-		t[i].join();
-	}
-    
-    for (typename std::vector<std::vector<T> >::iterator iter = B.begin(); iter != B.end(); ++iter) {
-        if ((*iter).size() > 0) {
-            a.insert(iter_a, (*iter).begin(), (*iter).end());
-            iter_a = a.end();
-        }
-    }
 #else
     // 构造线程
-    typename std::vector<std::vector<T> >::size_type thread_step = bucket_num / thread_num, offset = 0;
+    typename std::vector<std::vector<T> >::size_type offset = 0;
     std::vector<typename std::vector<std::vector<T> >::iterator> thread_steps;
     for (int i = 0; i != thread_num; ++i) {
         thread_steps.push_back(B.begin() + offset);
@@ -105,14 +98,16 @@ void ThreadBucketSort(std::vector<T> &a, const bool reverse = false, const int b
     }
     thread_steps.push_back(B.end());
     
-    std::vector<std::thread> t;
+//    time_t st = clock();
     for (int i = 0; i != thread_num; ++i) {
         t.push_back(std::thread(InsertionSortThread<T>, &thread_steps[i], &thread_steps[i + 1]));
     }
+#endif // _MSC_VER
     
     for (int i = 0; i != thread_num; ++i) {
         t[i].join();
     }
+//    std::cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << std::endl;
     
     for (typename std::vector<std::vector<T> >::iterator iter = B.begin(); iter != B.end(); ++iter) {
         if ((*iter).size() > 0) {
@@ -120,8 +115,6 @@ void ThreadBucketSort(std::vector<T> &a, const bool reverse = false, const int b
             iter_a = a.end();
         }
     }
-
-#endif // _MSC_VER
     
     // 是否要逆序排列
     if (reverse) {

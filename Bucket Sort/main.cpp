@@ -22,7 +22,7 @@ int main(int argc, const char * argv[]) {
     vector<double> a;
     vector<double> b;
     vector<int> c;
-    const int length = 2000000;
+    const int length = 100000;
     
     srand(static_cast<unsigned>(time(0)));
     for (int i = 0; i != length; ++i) {
@@ -59,7 +59,7 @@ int main(int argc, const char * argv[]) {
     cout << SortCheck(d, true) << endl;
     
     st = clock();
-    ThreadBucketSort(e, true, 1000, 2);
+    ThreadBucketSort(e, true, 1000, 5);
 //    PrintVector(d);
     cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
     cout << SortCheck(e, true) << endl;
