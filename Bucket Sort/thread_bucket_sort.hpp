@@ -23,7 +23,6 @@ void InsertionSortThread(typename std::vector<std::vector<T>>::iterator &begin, 
     }
 }
 #else
-std::mutex my_lock;
 template <typename T>
 void InsertionSortThread(typename std::vector<std::vector<T>>::iterator *begin, typename std::vector<std::vector<T>>::iterator *end) {
     typename std::vector<std::vector<T>>::size_type all = *end - *begin;
