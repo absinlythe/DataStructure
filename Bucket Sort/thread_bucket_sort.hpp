@@ -17,16 +17,16 @@
 
 #ifdef _MSC_VER
 template <typename T>
-void InsertionSortThread(typename std::vector<std::vector<T>>::iterator &begin, typename std::vector<std::vector<T>>::iterator &end) {
-    for (typename std::vector<std::vector<T>>::iterator iter = begin; iter != end; ++iter) {
+void InsertionSortThread(typename std::vector<std::vector<T> >::iterator &begin, typename std::vector<std::vector<T> >::iterator &end) {
+    for (typename std::vector<std::vector<T> >::iterator iter = begin; iter != end; ++iter) {
 		InsertionSort<T>(&(*iter));
     }
 }
 #else
 template <typename T>
-void InsertionSortThread(typename std::vector<std::vector<T>>::iterator *begin, typename std::vector<std::vector<T>>::iterator *end) {
-    typename std::vector<std::vector<T>>::size_type all = *end - *begin;
-    for (typename std::vector<std::vector<T>>::size_type i = 0; i!= all; ++i) {
+void InsertionSortThread(typename std::vector<std::vector<T> >::iterator *begin, typename std::vector<std::vector<T> >::iterator *end) {
+    typename std::vector<std::vector<T> >::size_type all = *end - *begin;
+    for (typename std::vector<std::vector<T> >::size_type i = 0; i!= all; ++i) {
         std::vector<T> *iter = &*(*begin + i);
         if (iter->size() > 1) {
             InsertionSort<T>(iter);
