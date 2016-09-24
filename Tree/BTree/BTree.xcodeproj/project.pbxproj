@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		82ABAF2D1D965BF1003EC1DF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82ABAF2C1D965BF1003EC1DF /* main.cpp */; };
+		82ABAF351D965D66003EC1DF /* BinaryTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 82ABAF331D965D66003EC1DF /* BinaryTree.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,9 @@
 /* Begin PBXFileReference section */
 		82ABAF291D965BF1003EC1DF /* BTree */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BTree; sourceTree = BUILT_PRODUCTS_DIR; };
 		82ABAF2C1D965BF1003EC1DF /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		82ABAF331D965D66003EC1DF /* BinaryTree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryTree.cpp; sourceTree = "<group>"; };
+		82ABAF341D965D66003EC1DF /* BinaryTree.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BinaryTree.hpp; sourceTree = "<group>"; };
+		82ABAF361D9669C9003EC1DF /* utils.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = utils.hpp; path = ../../../Utils/utils.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +61,10 @@
 		82ABAF2B1D965BF1003EC1DF /* BTree */ = {
 			isa = PBXGroup;
 			children = (
+				82ABAF361D9669C9003EC1DF /* utils.hpp */,
 				82ABAF2C1D965BF1003EC1DF /* main.cpp */,
+				82ABAF331D965D66003EC1DF /* BinaryTree.cpp */,
+				82ABAF341D965D66003EC1DF /* BinaryTree.hpp */,
 			);
 			path = BTree;
 			sourceTree = "<group>";
@@ -118,6 +125,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82ABAF351D965D66003EC1DF /* BinaryTree.cpp in Sources */,
 				82ABAF2D1D965BF1003EC1DF /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
