@@ -15,7 +15,7 @@
 using namespace std;
 
 int main(int argc, const char * argv[]) {
-    vector<int> a = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    vector<int> a = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17};
     
     BinaryTree<int> bt(a);
     
@@ -31,8 +31,14 @@ int main(int argc, const char * argv[]) {
     PrintVector(post);
     post = bt.PostorderTraversalNonrecursive();
     PrintVector(post);
+    vector<int> level = bt.LevelOrderTraversal();
+    PrintVector(level);
     
-    BinaryTree<long> bt2;
+    bt.InvertSelf();
+    in = bt.InorderTraversalNonrecursive();
+    PrintVector(in);
+    
+    cout << bt.GetHeight() << endl;
     
     return 0;
 }

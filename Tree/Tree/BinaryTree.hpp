@@ -12,6 +12,7 @@
 #include <vector>
 #include <iostream>
 #include <stack>
+#include <queue>
 
 template <typename T> struct TreeNode {
     T val;
@@ -22,9 +23,11 @@ template <typename T> struct TreeNode {
 
 template <typename T> class BinaryTree {
 public:
-    BinaryTree() { m_pRoot = NULL; }
+    BinaryTree() {
+        m_pRoot = NULL;
+    }
     
-    // 从数组构建完全二叉树
+    // 从数组构建满二叉树
     BinaryTree(const std::vector<T> &nums) {
         if (nums.empty()) {
             m_pRoot = NULL;
@@ -38,12 +41,13 @@ public:
     ~BinaryTree() {
         if (m_pRoot) {
             _BinaryTreeDestroy(m_pRoot);
+            m_pRoot = NULL;
         }
     }
     
     // 中序遍历二叉树（递归）
     const std::vector<T> InorderTraversal() const {
-        if (m_pRoot == NULL) return std::vector<T>();
+        if (!m_pRoot) return std::vector<T>();
         
         std::vector<T> traversal;
         _InorderTraversal(traversal, m_pRoot);
@@ -56,7 +60,7 @@ public:
     
     // 前序遍历二叉树（递归）
     const std::vector<T> PreorderTraversal() const {
-        if (m_pRoot == NULL) return std::vector<T>();
+        if (!m_pRoot) return std::vector<T>();
         
         std::vector<T> traversal;
         _PreorderTraversal(traversal, m_pRoot);
@@ -69,7 +73,7 @@ public:
     
     // 后序遍历二叉树（递归）
     const std::vector<T> PostorderTraversal() const {
-        if (m_pRoot == NULL) return std::vector<T>();
+        if (!m_pRoot) return std::vector<T>();
         
         std::vector<T> traversal;
         _PostorderTraversal(traversal, m_pRoot);
@@ -79,6 +83,23 @@ public:
     
     // 后序遍历二叉树（非递归）
     const std::vector<T> PostorderTraversalNonrecursive() const;
+    
+    // 层序遍历二叉树（递归）
+    const std::vector<T> LevelOrderTraversal() const;
+    
+    // 反转树
+    void InvertSelf() {
+        if (m_pRoot) {
+            m_pRoot = _InvertSelf(m_pRoot);
+        }
+    }
+    
+    // 高度
+    size_t GetHeight() const {
+        if (!m_pRoot) return 0;
+        
+        return _GetHeight(m_pRoot);
+    }
     
 protected:
     void _BinaryTreeConstruct(const std::vector<T> &nums, TreeNode<T> *root, const int index);
@@ -90,6 +111,10 @@ protected:
     void _PreorderTraversal(std::vector<T> &traversal, TreeNode<T> *root) const;
     
     void _PostorderTraversal(std::vector<T> &traversal, TreeNode<T> *root) const;
+    
+    size_t _GetHeight(TreeNode<T> *root) const;
+    
+    TreeNode<T> * _InvertSelf(TreeNode<T> *root);
 
 protected:
     TreeNode<T> *m_pRoot;
@@ -137,6 +162,29 @@ void BinaryTree<T>::_PreorderTraversal(std::vector<T> &traversal, TreeNode<T> *r
     traversal.push_back(root->val);
     if (root->left) _PreorderTraversal(traversal, root->left);
     if (root->right) _PreorderTraversal(traversal, root->right);
+}
+
+template <typename T>
+const std::vector<T> BinaryTree<T>::LevelOrderTraversal() const {
+    if (!m_pRoot) return std::vector<T>();
+    
+    std::vector<T> traversal;
+    std::queue<TreeNode<T> *> _queue;
+    _queue.push(m_pRoot);
+    
+    while(!_queue.empty()) {
+        TreeNode<T> *_root = _queue.front();
+        _queue.pop();
+        
+        if (_root) {
+            traversal.push_back(_root->val);
+            
+            if (_root->left) _queue.push(_root->left);
+            if (_root->right) _queue.push(_root->right);
+        }
+    }
+    
+    return traversal;
 }
 
 template <typename T>
@@ -226,6 +274,27 @@ const std::vector<T> BinaryTree<T>::PostorderTraversalNonrecursive() const {
     }
     
     return traversal;
+}
+
+template <typename T>
+TreeNode<T> * BinaryTree<T>::_InvertSelf(TreeNode<T> *root) {
+    if (!root || (root->left == NULL && root->right == NULL)) return root;
+    
+    TreeNode<T> *temp = root->right;
+    root->right = _InvertSelf(root->left);
+    root->left = _InvertSelf(temp);
+    
+    return root;
+}
+
+template <typename T>
+size_t BinaryTree<T>::_GetHeight(TreeNode<T> *root) const {
+    if (!root) return 0;
+    
+    size_t n_left = _GetHeight(root->left);
+    size_t n_right = _GetHeight(root->right);
+    
+    return (n_left > n_right) ? (n_left + 1) : (n_right + 1);
 }
 
 #endif /* BinaryTree_hpp */
