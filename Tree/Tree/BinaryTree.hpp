@@ -45,44 +45,47 @@ public:
         }
     }
     
-    // 中序遍历二叉树（递归）
-    const std::vector<T> InorderTraversal() const {
+    // 中序遍历二叉树
+    const std::vector<T> InorderTraversal(bool recursive = true) const {
         if (!m_pRoot) return std::vector<T>();
         
-        std::vector<T> traversal;
-        _InorderTraversal(traversal, m_pRoot);
-        
-        return traversal;
+        if (recursive) {     // 递归
+            std::vector<T> traversal;
+            _InorderTraversal(traversal, m_pRoot);
+            
+            return traversal;
+        } else {             // 非递归
+            return _InorderTraversalNonrecursive();
+        }
     }
     
-    // 中序遍历二叉树（非递归）
-    const std::vector<T> InorderTraversalNonrecursive() const;
-    
-    // 前序遍历二叉树（递归）
-    const std::vector<T> PreorderTraversal() const {
+    // 前序遍历二叉树
+    const std::vector<T> PreorderTraversal(bool recursive = true) const {
         if (!m_pRoot) return std::vector<T>();
         
-        std::vector<T> traversal;
-        _PreorderTraversal(traversal, m_pRoot);
-        
-        return traversal;
+        if (recursive) {     // 递归
+            std::vector<T> traversal;
+            _PreorderTraversal(traversal, m_pRoot);
+            
+            return traversal;
+        } else {             // 非递归
+            return _PreorderTraversalNonrecursive();
+        }
     }
-    
-    // 前序遍历二叉树（非递归）
-    const std::vector<T> PreorderTraversalNonrecursive() const;
     
     // 后序遍历二叉树（递归）
-    const std::vector<T> PostorderTraversal() const {
+    const std::vector<T> PostorderTraversal(bool recursive = true) const {
         if (!m_pRoot) return std::vector<T>();
         
-        std::vector<T> traversal;
-        _PostorderTraversal(traversal, m_pRoot);
+        if (recursive) {     // 递归
+            std::vector<T> traversal;
+            _PostorderTraversal(traversal, m_pRoot);
         
-        return traversal;
+            return traversal;
+        } else {             // 非递归
+            return _PostorderTraversalNonrecursive();
+        }
     }
-    
-    // 后序遍历二叉树（非递归）
-    const std::vector<T> PostorderTraversalNonrecursive() const;
     
     // 层序遍历二叉树（递归）
     const std::vector<T> LevelOrderTraversal() const;
@@ -116,16 +119,28 @@ protected:
     
     void _BinaryTreeDestroy(TreeNode<T> *root);
     
+    // 中序遍历二叉树（递归）
     void _InorderTraversal(std::vector<T> &traversal, TreeNode<T> *root) const;
     
+    // 中序遍历二叉树（非递归）
+    const std::vector<T> _InorderTraversalNonrecursive() const;
+    
+    // 前序遍历二叉树（递归）
     void _PreorderTraversal(std::vector<T> &traversal, TreeNode<T> *root) const;
     
+    // 前序遍历二叉树（非递归）
+    const std::vector<T> _PreorderTraversalNonrecursive() const;
+    
+    // 后序遍历二叉树（递归）
     void _PostorderTraversal(std::vector<T> &traversal, TreeNode<T> *root) const;
+    
+    // 后序遍历二叉树（非递归）
+    const std::vector<T> _PostorderTraversalNonrecursive() const;
     
     size_t _GetHeight(TreeNode<T> *root) const;
     
     TreeNode<T> * _InvertSelf(TreeNode<T> *root);
-
+    
 protected:
     TreeNode<T> *m_pRoot;
 };
@@ -207,7 +222,7 @@ void BinaryTree<T>::_PostorderTraversal(std::vector<T> &traversal, TreeNode<T> *
 }
 
 template <typename T>
-const std::vector<T> BinaryTree<T>::PreorderTraversalNonrecursive() const {
+const std::vector<T> BinaryTree<T>::_PreorderTraversalNonrecursive() const {
     if (m_pRoot == NULL) return std::vector<T>();
     
     std::vector<T> traversal;
@@ -228,7 +243,7 @@ const std::vector<T> BinaryTree<T>::PreorderTraversalNonrecursive() const {
 }
 
 template <typename T>
-const std::vector<T> BinaryTree<T>::InorderTraversalNonrecursive() const {
+const std::vector<T> BinaryTree<T>::_InorderTraversalNonrecursive() const {
     if (m_pRoot == NULL) return std::vector<T>();
     
     std::vector<T> traversal;
@@ -255,7 +270,7 @@ const std::vector<T> BinaryTree<T>::InorderTraversalNonrecursive() const {
 }
 
 template <typename T>
-const std::vector<T> BinaryTree<T>::PostorderTraversalNonrecursive() const {
+const std::vector<T> BinaryTree<T>::_PostorderTraversalNonrecursive() const {
     if (m_pRoot == NULL) return std::vector<T>();
     
     std::vector<T> traversal;

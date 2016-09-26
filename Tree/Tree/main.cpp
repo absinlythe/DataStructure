@@ -21,21 +21,21 @@ int main(int argc, const char * argv[]) {
     
     vector<int> in = bt.InorderTraversal();
     PrintVector(in);
-    in = bt.InorderTraversalNonrecursive();
+    in = bt.InorderTraversal(false);
     PrintVector(in);
     vector<int> pre = bt.PreorderTraversal();
     PrintVector(pre);
-    pre = bt.PreorderTraversalNonrecursive();
+    pre = bt.PreorderTraversal(false);
     PrintVector(pre);
     vector<int> post = bt.PostorderTraversal();
     PrintVector(post);
-    post = bt.PostorderTraversalNonrecursive();
+    post = bt.PostorderTraversal(false);
     PrintVector(post);
     vector<int> level = bt.LevelOrderTraversal();
     PrintVector(level);
     
     bt.InvertSelf();
-    in = bt.InorderTraversalNonrecursive();
+    in = bt.InorderTraversal(false);
     PrintVector(in);
     
     cout << bt.GetHeight() << endl;
