@@ -46,7 +46,7 @@ public:
     }
     
     // 中序遍历二叉树
-    const std::vector<T> InorderTraversal(bool recursive = true) const {
+    const std::vector<T> InorderTraversal(const bool recursive = true) const {
         if (!m_pRoot) return std::vector<T>();
         
         if (recursive) {     // 递归
@@ -60,7 +60,7 @@ public:
     }
     
     // 前序遍历二叉树
-    const std::vector<T> PreorderTraversal(bool recursive = true) const {
+    const std::vector<T> PreorderTraversal(const bool recursive = true) const {
         if (!m_pRoot) return std::vector<T>();
         
         if (recursive) {     // 递归
@@ -74,7 +74,7 @@ public:
     }
     
     // 后序遍历二叉树（递归）
-    const std::vector<T> PostorderTraversal(bool recursive = true) const {
+    const std::vector<T> PostorderTraversal(const bool recursive = true) const {
         if (!m_pRoot) return std::vector<T>();
         
         if (recursive) {     // 递归
@@ -115,9 +115,9 @@ public:
     }
     
 protected:
-	void _BinaryTreeConstruct(const std::vector<T> &nums, TreeNode<T> *root, size_t index);
+	void _BinaryTreeConstruct(const std::vector<T> &nums, TreeNode<T> *root, size_t index) const;
     
-    void _BinaryTreeDestroy(TreeNode<T> *root);
+    void _BinaryTreeDestroy(TreeNode<T> *root) const;
     
     // 中序遍历二叉树（递归）
     void _InorderTraversal(std::vector<T> &traversal, TreeNode<T> *root) const;
@@ -139,14 +139,14 @@ protected:
     
     size_t _GetHeight(TreeNode<T> *root) const;
     
-    TreeNode<T> * _InvertSelf(TreeNode<T> *root);
+    TreeNode<T> * _InvertSelf(TreeNode<T> *root) const;
     
 protected:
     TreeNode<T> *m_pRoot;
 };
 
 template <typename T>
-void BinaryTree<T>::_BinaryTreeConstruct(const std::vector<T> &nums, TreeNode<T> *root, size_t index) {
+void BinaryTree<T>::_BinaryTreeConstruct(const std::vector<T> &nums, TreeNode<T> *root, size_t index) const {
     if (!root) return;
     
     auto _index = 2 * index + 1;
@@ -163,7 +163,7 @@ void BinaryTree<T>::_BinaryTreeConstruct(const std::vector<T> &nums, TreeNode<T>
 }
 
 template <typename T>
-void BinaryTree<T>::_BinaryTreeDestroy(TreeNode<T> *root) {
+void BinaryTree<T>::_BinaryTreeDestroy(TreeNode<T> *root) const {
     if (root->left) _BinaryTreeDestroy(root->left);
     if (root->right) _BinaryTreeDestroy(root->right);
     
@@ -284,6 +284,8 @@ const std::vector<T> BinaryTree<T>::_PostorderTraversalNonrecursive() const {
         _root = _stack.top().first;
         visited = _stack.top().second;
         
+        // std::cout << (_root ? _root->val : -1) << " " << visited << std::endl;
+        
         _stack.pop();
         
         if (_root == NULL)
@@ -302,7 +304,7 @@ const std::vector<T> BinaryTree<T>::_PostorderTraversalNonrecursive() const {
 }
 
 template <typename T>
-TreeNode<T> * BinaryTree<T>::_InvertSelf(TreeNode<T> *root) {
+TreeNode<T> * BinaryTree<T>::_InvertSelf(TreeNode<T> *root) const {
     if (!root || (root->left == NULL && root->right == NULL)) return root;
     
     TreeNode<T> *temp = root->right;
