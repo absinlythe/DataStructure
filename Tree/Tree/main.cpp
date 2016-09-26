@@ -1,6 +1,6 @@
 //
 //  main.cpp
-//  BTree
+//  Tree
 //
 //  Created by 郑振宇 on 16/9/24.
 //  Copyright © 2016年 郑振宇. All rights reserved.
@@ -40,5 +40,9 @@ int main(int argc, const char * argv[]) {
     
     cout << bt.GetHeight() << endl;
     
+#ifdef _MSC_VER
+	system("pause");
+#endif // _MSC_VER
+
     return 0;
 }

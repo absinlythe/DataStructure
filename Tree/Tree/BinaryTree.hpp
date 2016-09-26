@@ -115,7 +115,7 @@ public:
     }
     
 protected:
-    void _BinaryTreeConstruct(const std::vector<T> &nums, TreeNode<T> *root, const int index);
+	void _BinaryTreeConstruct(const std::vector<T> &nums, TreeNode<T> *root, size_t index);
     
     void _BinaryTreeDestroy(TreeNode<T> *root);
     
@@ -146,7 +146,7 @@ protected:
 };
 
 template <typename T>
-void BinaryTree<T>::_BinaryTreeConstruct(const std::vector<T> &nums, TreeNode<T> *root, const int index) {
+void BinaryTree<T>::_BinaryTreeConstruct(const std::vector<T> &nums, TreeNode<T> *root, size_t index) {
     if (!root) return;
     
     auto _index = 2 * index + 1;
