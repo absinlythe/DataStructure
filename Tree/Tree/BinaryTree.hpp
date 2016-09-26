@@ -101,6 +101,16 @@ public:
         return _GetHeight(m_pRoot);
     }
     
+    // 节点数
+    size_t GetNodeNum() const {
+        if (!m_pRoot) return 0;
+    }
+    
+    // 叶节点数
+    size_t GetLeafNodeNum() const {
+        if (!m_pRoot) return 0;
+    }
+    
 protected:
     void _BinaryTreeConstruct(const std::vector<T> &nums, TreeNode<T> *root, const int index);
     
