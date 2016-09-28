@@ -149,13 +149,13 @@ template <typename T>
 void BinaryTree<T>::_BinaryTreeConstruct(const std::vector<T> &nums, TreeNode<T> *root, size_t index) const {
     if (!root) return;
     
-    auto _index = 2 * index + 1;
+    auto _index = (index << 1) + 1;
     if (_index < nums.size()) {
         root->left = new TreeNode<T>(nums[_index]);
         _BinaryTreeConstruct(nums, root->left, _index);
     }
     
-    _index += 1;
+    ++_index;
     if (_index < nums.size()) {
         root->right = new TreeNode<T>(nums[_index]);
         _BinaryTreeConstruct(nums, root->right, _index);
