@@ -11,100 +11,9 @@
 #include <ctime>
 #include <cstdlib>
 #include "utils.hpp"
+#include "quick_sort.hpp"
 
 using namespace::std;
-
-// 数组划分
-template <typename T>
-ssize_t Partition(vector<T> &a, const ssize_t p, const ssize_t r) {
-    T x = a[r];
-    ssize_t i = p - 1;
-    
-    for (vector<int>::size_type j = p; j != r; ++j) {
-        if (a[j] <= x) {
-            i = i + 1;
-            swap(a[i], a[j]);
-        }
-    }
-    
-    swap(a[i + 1], a[r]);
-    
-    return i + 1;
-}
-
-// 使用Hoare方法进行数组划分
-template <typename T>
-ssize_t HoarePartition(vector<T> &a, const ssize_t p, const ssize_t r) {
-    T x = a[p];
-    ssize_t i = p;
-    ssize_t j = r;
-    
-    while(i != j) {
-        while (a[j] >= x && i < j) {
-            --j;
-        }
-        
-        while (a[i] <= x && i < j) {
-            ++i;
-        }
-        
-        if (i < j) {
-            swap(a[i], a[j]);
-        }
-    }
-    
-    a[p] = a[i];
-    a[i] = x;
-    
-    return i;
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////
-// 快速排序
-template <typename T>
-void QuickSort(vector<T> &a, const ssize_t p, const ssize_t r) {
-    if (p < r) {
-        ssize_t q = Partition(a, p, r);
-        
-        QuickSort(a, p, q - 1);
-        QuickSort(a, q + 1, r);
-    }
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////
-// 使用Hoare方法进行快速排序
-template <typename T>
-void HoareQuickSort(vector<T> &a, const ssize_t p, const ssize_t r) {
-    if (p < r) {
-        ssize_t q = HoarePartition(a, p, r);
-        
-        HoareQuickSort(a, p, q - 1);
-        HoareQuickSort(a, q + 1, r);
-    }
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////
-// 使用随机的方式划分
-template <typename T>
-ssize_t RandomizedPartition(vector<T> &a, const ssize_t p, const ssize_t r) {
-    int i = static_cast<int>(random(p, r));
-    
-    swap(a[i], a[r]);
-    
-    return Partition(a, p, r);
-}
-
-// 随机化版本的快速排序
-template <typename T>
-void RandomizedQuickSort(vector<T> &a, const ssize_t p, const ssize_t r) {
-    if (p < r) {
-        ssize_t q = RandomizedPartition(a, p, r);
-        
-        RandomizedQuickSort(a, p, q - 1);
-        RandomizedQuickSort(a, q + 1, r);
-    }
-}
-
 
 int main(int argc, const char * argv[]) {
     srand(unsigned(time(0)));
@@ -119,8 +28,11 @@ int main(int argc, const char * argv[]) {
     
     printf("排序：\n");
     PrintVector(a);
+    cout << SortCheck(a) << endl;
     PrintVector(b);
+    cout << SortCheck(b) << endl;
     PrintVector(c);
+    cout << SortCheck(c) << endl;
     printf("\n");
     
     return 0;
