@@ -65,7 +65,7 @@ void QuickSortTest() {
 //    vector<long> b{13, 19, 9, 5, 12, 8, 7, 4, 21, 2, 6, 11, 6};
 //    vector<double> c{13.1, 19.5, 9.9, 5.5, 12.1, 8.4, 7.6, 4.3, 21.2, 5.9, 12.1, 8.1, 2.7, 6.8, 11.9, 6.8};
     
-    const int length = 10000;
+    const int length = 20000;
     
     vector<double> a;
     vector<double> b;
@@ -91,4 +91,29 @@ void QuickSortTest() {
 	cout << SortCheck(c) << endl;
 	//    PrintVector(d);
 	cout << SortCheck(d) << endl;
+}
+
+void InsertSortTest() {
+    const int length = 10000;
+    
+    vector<double> a;
+    vector<double> b;
+    vector<int> c;
+    
+    for (int i = 0; i != length; ++i) {
+        a.push_back((rand() % 10000) / 10000.0 - 0.5);
+        b.push_back((rand() % 10000) / 100.0);
+        c.push_back((rand() % 100000));
+    }
+    
+    InsertionSort(a);
+    InsertionSort(b);
+    InsertionSort(c);
+
+        PrintVector(a);
+    cout << SortCheck(a) << endl;
+    //    PrintVector(b);
+    cout << SortCheck(b) << endl;
+    //    PrintVector(c);
+    cout << SortCheck(c) << endl;
 }

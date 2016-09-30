@@ -13,4 +13,6 @@ void BucketSortTest();
 
 void QuickSortTest();
 
+void InsertSortTest();
+
 #endif /* test_hpp */

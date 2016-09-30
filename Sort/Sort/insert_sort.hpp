@@ -9,7 +9,7 @@
 #ifndef insert_sort_hpp
 #define insert_sort_hpp
 
-// 插入排序
+// 插入排序（用于桶排序）
 template <typename T>
 void InsertionSort(std::vector<T> *iter) {
     if (!iter || iter->size() <= 1) return;
@@ -19,6 +19,25 @@ void InsertionSort(std::vector<T> *iter) {
         typename std::vector<T>::iterator iter_i = iter_j;
         
         while (iter_i > (*iter).begin() && *(iter_i - 1) > key) {
+            *iter_i = *(iter_i - 1);
+            
+            --iter_i;
+        }
+        
+        *iter_i = key;
+    }
+}
+
+// 插入排序
+template <typename T>
+void InsertionSort(std::vector<T> &a) {
+    if (a.size() <= 1) return;
+    
+    for (auto iter_j = a.begin() + 1; iter_j != a.end(); ++iter_j) {
+        T key = *iter_j;
+        auto iter_i = iter_j;
+        
+        while (iter_i > a.begin() && *(iter_i - 1) > key) {
             *iter_i = *(iter_i - 1);
             
             --iter_i;
