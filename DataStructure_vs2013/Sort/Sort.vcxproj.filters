@@ -13,20 +13,41 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="头文件\BucketSort">
+      <UniqueIdentifier>{d737bf1c-27be-4151-a7cd-7d97a05b5ed5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\InsertSort">
+      <UniqueIdentifier>{c6d584bf-e6ed-4ce3-b5f3-d97ae1a9b365}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\QuickSort">
+      <UniqueIdentifier>{417a7f25-aaf7-433d-89bc-af52f1127932}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Test">
+      <UniqueIdentifier>{29beb572-7730-43f4-81e7-8663af94f77f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Sort\BucketSort\Bucket Sort\bucket_sort.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Sort\BucketSort\Bucket Sort\insert_sort.hpp">
-      <Filter>头文件</Filter>
+      <Filter>头文件\InsertSort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sort\BucketSort\Bucket Sort\bucket_sort.hpp">
+      <Filter>头文件\BucketSort</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Sort\BucketSort\Bucket Sort\thread_bucket_sort.hpp">
-      <Filter>头文件</Filter>
+      <Filter>头文件\BucketSort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sort\Sort\quick_sort.hpp">
+      <Filter>头文件\QuickSort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sort\Sort\test.hpp">
+      <Filter>头文件\Test</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Sort\BucketSort\Bucket Sort\main.cpp">
+    <ClCompile Include="..\..\Sort\Sort\main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sort\Sort\test.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

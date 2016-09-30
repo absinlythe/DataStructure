@@ -81,9 +81,12 @@
     <ClInclude Include="..\..\Sort\BucketSort\Bucket Sort\bucket_sort.hpp" />
     <ClInclude Include="..\..\Sort\BucketSort\Bucket Sort\insert_sort.hpp" />
     <ClInclude Include="..\..\Sort\BucketSort\Bucket Sort\thread_bucket_sort.hpp" />
+    <ClInclude Include="..\..\Sort\Sort\quick_sort.hpp" />
+    <ClInclude Include="..\..\Sort\Sort\test.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Sort\BucketSort\Bucket Sort\main.cpp" />
+    <ClCompile Include="..\..\Sort\Sort\main.cpp" />
+    <ClCompile Include="..\..\Sort\Sort\test.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
