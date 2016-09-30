@@ -120,7 +120,7 @@ void InsertSortTest() {
 }
 
 void HeapSortTest() {
-    const int length = 10000;
+    const int length = 100000;
     
     vector<double> a;
     vector<double> b;

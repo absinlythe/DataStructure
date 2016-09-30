@@ -81,6 +81,7 @@
     <ClInclude Include="..\..\Sort\BucketSort\Bucket Sort\bucket_sort.hpp" />
     <ClInclude Include="..\..\Sort\BucketSort\Bucket Sort\insert_sort.hpp" />
     <ClInclude Include="..\..\Sort\BucketSort\Bucket Sort\thread_bucket_sort.hpp" />
+    <ClInclude Include="..\..\Sort\Sort\heap_sort.hpp" />
     <ClInclude Include="..\..\Sort\Sort\quick_sort.hpp" />
     <ClInclude Include="..\..\Sort\Sort\test.hpp" />
   </ItemGroup>
