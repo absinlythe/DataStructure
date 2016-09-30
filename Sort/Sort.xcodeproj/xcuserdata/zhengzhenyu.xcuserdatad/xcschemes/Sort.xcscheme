@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0730"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "82AB54951BB10492002BE519"
-               BuildableName = "Quick Sort"
-               BlueprintName = "Quick Sort"
-               ReferencedContainer = "container:Quick Sort.xcodeproj">
+               BlueprintIdentifier = "8236C6AE1D9E69B5008168CC"
+               BuildableName = "Sort"
+               BlueprintName = "Sort"
+               ReferencedContainer = "container:Sort.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "82AB54951BB10492002BE519"
-            BuildableName = "Quick Sort"
-            BlueprintName = "Quick Sort"
-            ReferencedContainer = "container:Quick Sort.xcodeproj">
+            BlueprintIdentifier = "8236C6AE1D9E69B5008168CC"
+            BuildableName = "Sort"
+            BlueprintName = "Sort"
+            ReferencedContainer = "container:Sort.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -55,10 +55,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "82AB54951BB10492002BE519"
-            BuildableName = "Quick Sort"
-            BlueprintName = "Quick Sort"
-            ReferencedContainer = "container:Quick Sort.xcodeproj">
+            BlueprintIdentifier = "8236C6AE1D9E69B5008168CC"
+            BuildableName = "Sort"
+            BlueprintName = "Sort"
+            ReferencedContainer = "container:Sort.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -74,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "82AB54951BB10492002BE519"
-            BuildableName = "Quick Sort"
-            BlueprintName = "Quick Sort"
-            ReferencedContainer = "container:Quick Sort.xcodeproj">
+            BlueprintIdentifier = "8236C6AE1D9E69B5008168CC"
+            BuildableName = "Sort"
+            BlueprintName = "Sort"
+            ReferencedContainer = "container:Sort.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
