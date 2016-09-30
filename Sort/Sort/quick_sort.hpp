@@ -10,7 +10,6 @@
 #define quick_sort_hpp
 
 #include <vector>
-#include <sys/types.h>
 #include <cstddef>
 #include "utils.hpp"
 

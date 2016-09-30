@@ -83,13 +83,12 @@ void QuickSortTest() {
     RandomizedQuickSort(b, 0, b.size() - 1);
     HoareQuickSort(c, 0, c.size() - 1);
     
-    cout << "排序：" << endl;
-//    PrintVector(a);
-    cout << SortCheck(a) << endl;
-//    PrintVector(b);
-    cout << SortCheck(b) << endl;
-//    PrintVector(c);
-    cout << SortCheck(c) << endl;
-//    PrintVector(d);
-    cout << SortCheck(d) << endl;
+	//    PrintVector(a);
+	cout << SortCheck(a) << endl;
+	//    PrintVector(b);
+	cout << SortCheck(b) << endl;
+	//    PrintVector(c);
+	cout << SortCheck(c) << endl;
+	//    PrintVector(d);
+	cout << SortCheck(d) << endl;
 }
