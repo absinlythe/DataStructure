@@ -74,4 +74,9 @@ bool SortCheck(std::vector<T> &a, const bool reverse = false) {
     return true;
 }
 
+// 产生指定范围内的随机数
+double random(double start, double end) {
+    return start + (end - start) * rand() / (RAND_MAX + 1.0);
+}
+
 #endif /* utils_hpp */
