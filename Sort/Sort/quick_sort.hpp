@@ -14,28 +14,28 @@
 
 // 数组划分
 template <typename T>
-ssize_t Partition(std::vector<T> &a, const ssize_t p, const ssize_t r) {
+size_t Partition(std::vector<T> &a, const size_t p, const size_t r) {
     T x = a[r];
-    ssize_t i = p - 1;
+    size_t i = p;
     
     for (auto j = p; j != r; ++j) {
         if (a[j] <= x) {
-            i = i + 1;
             std::swap(a[i], a[j]);
+            i = i + 1;
         }
     }
     
-    std::swap(a[i + 1], a[r]);
+    std::swap(a[i], a[r]);
     
-    return i + 1;
+    return i;
 }
 
 // 使用Hoare方法进行数组划分
 template <typename T>
-ssize_t HoarePartition(std::vector<T> &a, const ssize_t p, const ssize_t r) {
+size_t HoarePartition(std::vector<T> &a, const size_t p, const size_t r) {
     T x = a[p];
-    ssize_t i = p;
-    ssize_t j = r;
+    size_t i = p;
+    size_t j = r;
     
     while(i != j) {
         while (a[j] >= x && i < j) {
@@ -60,11 +60,11 @@ ssize_t HoarePartition(std::vector<T> &a, const ssize_t p, const ssize_t r) {
 ////////////////////////////////////////////////////////////////////////////////////////////////
 // 快速排序
 template <typename T>
-void QuickSort(std::vector<T> &a, const ssize_t p, const ssize_t r) {
+void QuickSort(std::vector<T> &a, const size_t p, const size_t r) {
     if (p < r) {
-        ssize_t q = Partition(a, p, r);
+        size_t q = Partition(a, p, r);
         
-        QuickSort(a, p, q - 1);
+        if (q > 0) QuickSort(a, p, q - 1);
         QuickSort(a, q + 1, r);
     }
 }
@@ -72,11 +72,11 @@ void QuickSort(std::vector<T> &a, const ssize_t p, const ssize_t r) {
 ////////////////////////////////////////////////////////////////////////////////////////////////
 // 使用Hoare方法进行快速排序
 template <typename T>
-void HoareQuickSort(std::vector<T> &a, const ssize_t p, const ssize_t r) {
+void HoareQuickSort(std::vector<T> &a, const size_t p, const size_t r) {
     if (p < r) {
-        ssize_t q = HoarePartition(a, p, r);
+        size_t q = HoarePartition(a, p, r);
         
-        HoareQuickSort(a, p, q - 1);
+        if (q > 0) HoareQuickSort(a, p, q - 1);
         HoareQuickSort(a, q + 1, r);
     }
 }
@@ -84,7 +84,7 @@ void HoareQuickSort(std::vector<T> &a, const ssize_t p, const ssize_t r) {
 ////////////////////////////////////////////////////////////////////////////////////////////////
 // 使用随机的方式划分
 template <typename T>
-ssize_t RandomizedPartition(std::vector<T> &a, const ssize_t p, const ssize_t r) {
+size_t RandomizedPartition(std::vector<T> &a, const size_t p, const size_t r) {
     int i = static_cast<int>(random(p, r));
     
     std::swap(a[i], a[r]);
@@ -94,11 +94,11 @@ ssize_t RandomizedPartition(std::vector<T> &a, const ssize_t p, const ssize_t r)
 
 // 随机化版本的快速排序
 template <typename T>
-void RandomizedQuickSort(std::vector<T> &a, const ssize_t p, const ssize_t r) {
+void RandomizedQuickSort(std::vector<T> &a, const size_t p, const size_t r) {
     if (p < r) {
-        ssize_t q = RandomizedPartition(a, p, r);
+        size_t q = RandomizedPartition(a, p, r);
         
-        RandomizedQuickSort(a, p, q - 1);
+        if (q > 0) RandomizedQuickSort(a, p, q - 1);
         RandomizedQuickSort(a, q + 1, r);
     }
 }
