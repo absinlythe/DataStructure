@@ -15,4 +15,6 @@ void QuickSortTest();
 
 void InsertSortTest();
 
+void HeapSortTest();
+
 #endif /* test_hpp */

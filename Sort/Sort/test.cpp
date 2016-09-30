@@ -11,6 +11,7 @@
 #include "quick_sort.hpp"
 #include "bucket_sort.hpp"
 #include "thread_bucket_sort.hpp"
+#include "heap_sort.hpp"
 
 using namespace std;
 
@@ -110,7 +111,33 @@ void InsertSortTest() {
     InsertionSort(b);
     InsertionSort(c);
 
-        PrintVector(a);
+//        PrintVector(a);
+    cout << SortCheck(a) << endl;
+    //    PrintVector(b);
+    cout << SortCheck(b) << endl;
+    //    PrintVector(c);
+    cout << SortCheck(c) << endl;
+}
+
+void HeapSortTest() {
+    const int length = 10000;
+    
+    vector<double> a;
+    vector<double> b;
+    vector<int> c;
+    
+    for (int i = 0; i != length; ++i) {
+        a.push_back((rand() % 10000) / 10000.0 - 0.5);
+        b.push_back((rand() % 10000) / 100.0);
+        c.push_back((rand() % 100000));
+    }
+
+    
+    HeapSort(a);
+    HeapSort(b);
+    HeapSort(c);
+    
+    //    PrintVector(a);
     cout << SortCheck(a) << endl;
     //    PrintVector(b);
     cout << SortCheck(b) << endl;

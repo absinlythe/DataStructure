@@ -22,7 +22,9 @@ int main(int argc, const char * argv[]) {
     
 //    QuickSortTest();
     
-    InsertSortTest();
+//    InsertSortTest();
+    
+    HeapSortTest();
     
 #ifdef _MSC_VER
 	system("pause");

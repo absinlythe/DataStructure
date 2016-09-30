@@ -33,6 +33,7 @@
 		82650E6E1D9E6B240081827D /* insert_sort.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = insert_sort.hpp; sourceTree = "<group>"; };
 		82650E701D9E6B890081827D /* test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test.cpp; sourceTree = "<group>"; };
 		82650E711D9E6B890081827D /* test.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = test.hpp; sourceTree = "<group>"; };
+		82650E751D9EA42A0081827D /* heap_sort.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = heap_sort.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +68,7 @@
 			children = (
 				8236C6B21D9E69B5008168CC /* main.cpp */,
 				82650E6F1D9E6B770081827D /* Test */,
+				82650E731D9EA3E10081827D /* HeapSort */,
 				82650E661D9E6A800081827D /* Utils */,
 				82650E641D9E6A4D0081827D /* QuickSort */,
 				82650E631D9E6A2E0081827D /* BucketSort */,
@@ -115,6 +117,14 @@
 				82650E711D9E6B890081827D /* test.hpp */,
 			);
 			name = Test;
+			sourceTree = "<group>";
+		};
+		82650E731D9EA3E10081827D /* HeapSort */ = {
+			isa = PBXGroup;
+			children = (
+				82650E751D9EA42A0081827D /* heap_sort.hpp */,
+			);
+			name = HeapSort;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
