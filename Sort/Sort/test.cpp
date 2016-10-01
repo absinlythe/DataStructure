@@ -13,6 +13,7 @@
 #include "thread_bucket_sort.hpp"
 #include "heap_sort.hpp"
 #include "selection_sort.hpp"
+#include "bubble_sort.hpp"
 
 using namespace std;
 
@@ -176,6 +177,35 @@ void SelectionSortTest() {
     
     SelectionSort(b);
     SelectionSort(c);
+    
+    //    PrintVector(a);
+    cout << SortCheck(a) << endl;
+    //    PrintVector(b);
+    cout << SortCheck(b) << endl;
+    //    PrintVector(c);
+    cout << SortCheck(c) << endl;
+}
+
+void BubbleSortTest() {
+    const int length = 100000;
+    
+    vector<double> a;
+    vector<double> b;
+    vector<int> c;
+    
+    for (int i = 0; i != length; ++i) {
+        a.push_back((rand() % 10000) / 10000.0 - 0.5);
+        b.push_back((rand() % 10000) / 100.0);
+        c.push_back((rand() % 100000));
+    }
+    
+    time_t st = clock();
+    
+    BubbleSort(a);
+    cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
+    
+    BubbleSort(b);
+    BubbleSort(c);
     
     //    PrintVector(a);
     cout << SortCheck(a) << endl;

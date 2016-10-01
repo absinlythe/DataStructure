@@ -19,4 +19,6 @@ void HeapSortTest();
 
 void SelectionSortTest();
 
+void BubbleSortTest();
+
 #endif /* test_hpp */
