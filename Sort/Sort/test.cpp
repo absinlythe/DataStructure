@@ -117,13 +117,13 @@ void InsertSortTest() {
     }
     
     InsertionSort(a);
-    InsertionSort(b);
+    InsertionSort<double, greater<double> >(b);
     InsertionSort(c);
 
 //        PrintVector(a);
     cout << SortCheck(a) << endl;
     //    PrintVector(b);
-    cout << SortCheck(b) << endl;
+    cout << SortCheck(b, true) << endl;
     //    PrintVector(c);
     cout << SortCheck(c) << endl;
 }
@@ -158,7 +158,7 @@ void HeapSortTest() {
 }
 
 void SelectionSortTest() {
-    const int length = 100000;
+    const int length = 10000;
     
     vector<double> a;
     vector<double> b;
@@ -175,19 +175,19 @@ void SelectionSortTest() {
     SelectionSort(a);
     cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
     
-    SelectionSort(b);
+    SelectionSort<double, greater<double> >(b);
     SelectionSort(c);
     
     //    PrintVector(a);
     cout << SortCheck(a) << endl;
     //    PrintVector(b);
-    cout << SortCheck(b) << endl;
+    cout << SortCheck(b, true) << endl;
     //    PrintVector(c);
     cout << SortCheck(c) << endl;
 }
 
 void BubbleSortTest() {
-    const int length = 100000;
+    const int length = 10000;
     
     vector<double> a;
     vector<double> b;
@@ -204,13 +204,13 @@ void BubbleSortTest() {
     BubbleSort(a);
     cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
     
-    BubbleSort(b);
+    BubbleSort<double, greater<double> >(b);
     BubbleSort(c);
     
     //    PrintVector(a);
     cout << SortCheck(a) << endl;
     //    PrintVector(b);
-    cout << SortCheck(b) << endl;
+    cout << SortCheck(b, true) << endl;
     //    PrintVector(c);
     cout << SortCheck(c) << endl;
 }

@@ -9,6 +9,9 @@
 #ifndef insert_sort_hpp
 #define insert_sort_hpp
 
+#include <vector>
+#include <functional>
+
 // 插入排序（用于桶排序）
 template <typename T>
 void InsertionSort(std::vector<T> *iter) {
@@ -29,15 +32,21 @@ void InsertionSort(std::vector<T> *iter) {
 }
 
 // 插入排序
-template <typename T>
+template <typename T, typename Compare = std::less<T> >
 void InsertionSort(std::vector<T> &a) {
     if (a.size() <= 1) return;
+    
+    Compare _comp;
     
     for (auto iter_j = a.begin() + 1; iter_j != a.end(); ++iter_j) {
         T key = *iter_j;
         auto iter_i = iter_j;
+
+//        std::cout << _comp(*a.begin(), *iter_i) << std::endl;
         
-        while (iter_i > a.begin() && *(iter_i - 1) > key) {
+//        while (iter_i > a.begin() && *(iter_i - 1) > key) {
+        
+        while (iter_i > a.begin() && _comp(key, *(iter_i - 1))) {
             *iter_i = *(iter_i - 1);
             
             --iter_i;

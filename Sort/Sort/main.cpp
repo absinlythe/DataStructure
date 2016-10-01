@@ -22,13 +22,13 @@ int main(int argc, const char * argv[]) {
     
 //    QuickSortTest();
     
-//    InsertSortTest();
+    InsertSortTest();
     
 //    HeapSortTest();
     
 //    SelectionSortTest();
     
-    BubbleSortTest();
+//    BubbleSortTest();
     
 #ifdef _MSC_VER
 	system("pause");
