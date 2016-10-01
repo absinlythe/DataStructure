@@ -18,8 +18,8 @@ void BubbleSort(std::vector<T> &a) {
     
     Compare _comp;
     
-    for (std::vector<T>::size_type i = 0; i < a.size() - 1; ++i) {
-		for (std::vector<T>::size_type j = 0; j <= a.size() - i - 2; ++j) {
+    for (typename std::vector<T>::size_type i = 0; i < a.size() - 1; ++i) {
+		for (typename std::vector<T>::size_type j = 0; j <= a.size() - i - 2; ++j) {
             if (_comp(a[j + 1], a[j])) std::swap(a[j], a[j + 1]);
         }
     }
