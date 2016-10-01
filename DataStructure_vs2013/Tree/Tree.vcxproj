@@ -78,7 +78,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Tree\Tree\BinaryTree.cpp" />
     <ClCompile Include="..\..\Tree\Tree\main.cpp" />
   </ItemGroup>
   <ItemGroup>
