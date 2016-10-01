@@ -24,6 +24,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		82245FF41D9FE16300E49E81 /* selection_sort.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = selection_sort.hpp; sourceTree = "<group>"; };
 		8236C6AF1D9E69B5008168CC /* Sort */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Sort; sourceTree = BUILT_PRODUCTS_DIR; };
 		8236C6B21D9E69B5008168CC /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		82650E671D9E6A8B0081827D /* utils.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = utils.hpp; path = ../../Utils/utils.hpp; sourceTree = "<group>"; };
@@ -47,6 +48,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		82245FF21D9FE0C200E49E81 /* SelectionSort */ = {
+			isa = PBXGroup;
+			children = (
+				82245FF41D9FE16300E49E81 /* selection_sort.hpp */,
+			);
+			name = SelectionSort;
+			sourceTree = "<group>";
+		};
 		8236C6A61D9E69B5008168CC = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +77,7 @@
 			children = (
 				8236C6B21D9E69B5008168CC /* main.cpp */,
 				82650E6F1D9E6B770081827D /* Test */,
+				82245FF21D9FE0C200E49E81 /* SelectionSort */,
 				82650E731D9EA3E10081827D /* HeapSort */,
 				82650E661D9E6A800081827D /* Utils */,
 				82650E641D9E6A4D0081827D /* QuickSort */,

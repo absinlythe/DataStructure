@@ -20,11 +20,13 @@ int main(int argc, const char * argv[]) {
     
 //    BucketSortTest();
     
-//    QuickSortTest();
+    QuickSortTest();
     
 //    InsertSortTest();
     
-    HeapSortTest();
+//    HeapSortTest();
+    
+//    SelectionSortTest();
     
 #ifdef _MSC_VER
 	system("pause");

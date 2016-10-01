@@ -12,6 +12,7 @@
 #include "bucket_sort.hpp"
 #include "thread_bucket_sort.hpp"
 #include "heap_sort.hpp"
+#include "selection_sort.hpp"
 
 using namespace std;
 
@@ -66,7 +67,7 @@ void QuickSortTest() {
 //    vector<long> b{13, 19, 9, 5, 12, 8, 7, 4, 21, 2, 6, 11, 6};
 //    vector<double> c{13.1, 19.5, 9.9, 5.5, 12.1, 8.4, 7.6, 4.3, 21.2, 5.9, 12.1, 8.1, 2.7, 6.8, 11.9, 6.8};
     
-    const int length = 20000;
+    const int length = 10000000;
     
     vector<double> a;
     vector<double> b;
@@ -79,10 +80,17 @@ void QuickSortTest() {
         c.push_back((rand() % 100000));
     }
     
+    time_t st = clock();
+    
     QuickSort(a, 0, a.size() - 1);
+    cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
+    
     QuickSort(d, 0, d.size() - 1);
     RandomizedQuickSort(b, 0, b.size() - 1);
+    
+    st = clock();
     HoareQuickSort(c, 0, c.size() - 1);
+    cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
     
 	//    PrintVector(a);
 	cout << SortCheck(a) << endl;
@@ -120,7 +128,7 @@ void InsertSortTest() {
 }
 
 void HeapSortTest() {
-    const int length = 100000;
+    const int length = 10000000;
     
     vector<double> a;
     vector<double> b;
@@ -132,10 +140,42 @@ void HeapSortTest() {
         c.push_back((rand() % 100000));
     }
 
+    time_t st = clock();
     
     HeapSort(a);
+    cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
+    
     HeapSort(b);
     HeapSort(c);
+    
+    //    PrintVector(a);
+    cout << SortCheck(a) << endl;
+    //    PrintVector(b);
+    cout << SortCheck(b) << endl;
+    //    PrintVector(c);
+    cout << SortCheck(c) << endl;
+}
+
+void SelectionSortTest() {
+    const int length = 100000;
+    
+    vector<double> a;
+    vector<double> b;
+    vector<int> c;
+    
+    for (int i = 0; i != length; ++i) {
+        a.push_back((rand() % 10000) / 10000.0 - 0.5);
+        b.push_back((rand() % 10000) / 100.0);
+        c.push_back((rand() % 100000));
+    }
+    
+    time_t st = clock();
+    
+    SelectionSort(a);
+    cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
+    
+    SelectionSort(b);
+    SelectionSort(c);
     
     //    PrintVector(a);
     cout << SortCheck(a) << endl;
