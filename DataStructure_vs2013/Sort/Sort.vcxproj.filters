@@ -28,6 +28,12 @@
     <Filter Include="头文件\HeapSort">
       <UniqueIdentifier>{03b65474-a896-4fa1-b38c-1993a46f539b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\BubbleSort">
+      <UniqueIdentifier>{facf718a-1e14-41f3-9a64-fae2ef548801}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\SelectionSort">
+      <UniqueIdentifier>{e822a630-f0c4-401c-8b21-1390fcc96e26}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Sort\BucketSort\Bucket Sort\insert_sort.hpp">
@@ -47,6 +53,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Sort\Sort\heap_sort.hpp">
       <Filter>头文件\HeapSort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sort\Sort\bubble_sort.hpp">
+      <Filter>头文件\BubbleSort</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sort\Sort\selection_sort.hpp">
+      <Filter>头文件\SelectionSort</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -18,7 +18,7 @@ void SelectionSort(std::vector<T> &a) {
     
     Compare _comp;
     
-    for (auto i = 0; i <= a.size() - 1; ++i) {
+	for (std::vector<T>::size_type i = 0; i <= a.size() - 1; ++i) {
         auto index = i;
         
         for (auto j = i + 1; j != a.size(); ++j) {
