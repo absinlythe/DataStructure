@@ -18,7 +18,7 @@ using namespace::std;
 int main(int argc, const char * argv[]) {
     srand(unsigned(time(0)));
     
-    BucketSortTest();
+//    BucketSortTest();
     
 //    QuickSortTest();
     
@@ -29,6 +29,8 @@ int main(int argc, const char * argv[]) {
 //    SelectionSortTest();
     
 //    BubbleSortTest();
+    
+    MergeSortTest();
     
 #ifdef _MSC_VER
 	system("pause");

@@ -21,4 +21,6 @@ void SelectionSortTest();
 
 void BubbleSortTest();
 
+void MergeSortTest();
+
 #endif /* test_hpp */

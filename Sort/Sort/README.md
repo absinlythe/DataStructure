@@ -24,14 +24,20 @@
 	代码文件：  
 
 		1. insert_sort.hpp
+		
+## 5. MergeSort——归并排序
+  
+	代码文件：  
 
-## 5. QuickSort——快速排序
+		1. merge_sort.hpp
+
+## 6. QuickSort——快速排序
   
 	代码文件：  
 
 		1. quick_sort.hpp
 
-## 6. SelectionSort——选择排序
+## 7. SelectionSort——选择排序
   
 	代码文件：  
 
