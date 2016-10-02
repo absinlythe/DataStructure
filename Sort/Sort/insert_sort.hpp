@@ -53,7 +53,7 @@ void InsertionSortIterator(std::vector<T> &a) {
 }
 
 // 插入排序（下标非递归版）
-template <typename T, typename Compare = std::less<T> >
+template <typename T, typename Compare>
 void _InsertionSort(std::vector<T> &a, Compare _comp) {
     if (a.size() <= 1) return;
     
@@ -73,7 +73,7 @@ void _InsertionSort(std::vector<T> &a, Compare _comp) {
 
 // 插入排序（下标递归版）
 // 注意：当数组长度过大时，会出现栈溢出
-template <typename T, typename Compare = std::less<T> >
+template <typename T, typename Compare>
 void _InsertionSortRecursive(std::vector<T> &a, size_t index, Compare _comp) {
     if (a.size() <= 1 || index == 0) return;
     

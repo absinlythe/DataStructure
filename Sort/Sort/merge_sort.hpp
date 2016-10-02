@@ -36,12 +36,12 @@ void MergeVector(std::vector<T> &a, size_t first, size_t mid, size_t last, std::
 }
 
 template <typename T, typename Compare>
-void MergeSort(std::vector<T> &a, size_t first, size_t last, std::vector<T> &temp, Compare _comp) {
+void _MergeSort(std::vector<T> &a, size_t first, size_t last, std::vector<T> &temp, Compare _comp) {
     if (first < last) {
         size_t mid = ((last - first) >> 1) + first;
         
-        MergeSort(a, first, mid, temp, _comp);
-        MergeSort(a, mid + 1, last, temp, _comp);
+        _MergeSort(a, first, mid, temp, _comp);
+        _MergeSort(a, mid + 1, last, temp, _comp);
         
         MergeVector(a, first, mid, last, temp, _comp);
     }
@@ -54,7 +54,7 @@ void MergeSort(std::vector<T> &a) {
     Compare _comp;
     
     std::vector<T> temp(a.size());
-    MergeSort(a, 0, a.size() - 1, temp, _comp);
+    _MergeSort(a, 0, a.size() - 1, temp, _comp);
 }
 
 #endif /* merge_sort_hpp */

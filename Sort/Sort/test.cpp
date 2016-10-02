@@ -186,20 +186,32 @@ void SelectionSortTest() {
     vector<double> a;
     vector<double> b;
     vector<int> c;
+//    vector<int> d { 13, 19, 9, 5, 12, 8, 7, 4, 21, 2, 6, 11, 6 };
     
     for (int i = 0; i != length; ++i) {
         a.push_back((rand() % 10000) / 10000.0 - 0.5);
         b.push_back((rand() % 10000) / 100.0);
         c.push_back((rand() % 100000));
     }
+    
+    vector<int> d(c);
     
     time_t st = clock();
     
     SelectionSort(a);
     cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
     
+    st = clock();
     SelectionSort<double, greater<double> >(b);
+    cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
+    
+    st = clock();
     SelectionSort(c);
+    cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
+    
+    st = clock();
+    SelectionSort(d, true);
+    cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
     
     //    PrintVector(a);
     cout << SortCheck(a) << endl;
@@ -207,14 +219,17 @@ void SelectionSortTest() {
     cout << SortCheck(b, true) << endl;
     //    PrintVector(c);
     cout << SortCheck(c) << endl;
+    //    PrintVector(d);
+    cout << SortCheck(d) << endl;
 }
 
 void BubbleSortTest() {
-    const int length = 10000;
+    const int length = 20000;
     
     vector<double> a;
     vector<double> b;
     vector<int> c;
+//    vector<int> d { 1, 2, 3, 4, 5, 6, 7, 9, 8 };
     
     for (int i = 0; i != length; ++i) {
         a.push_back((rand() % 10000) / 10000.0 - 0.5);
@@ -222,13 +237,24 @@ void BubbleSortTest() {
         c.push_back((rand() % 100000));
     }
     
+    vector<int> d(c);
+    
     time_t st = clock();
     
     BubbleSort(a);
     cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
     
+    st = clock();
     BubbleSort<double, greater<double> >(b);
-    BubbleSort(c);
+    cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
+    
+    st = clock();
+    BubbleSort(c, true);
+    cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
+    
+    st = clock();
+    BubbleSortImprove(d);
+    cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
     
     //    PrintVector(a);
     cout << SortCheck(a) << endl;
@@ -236,6 +262,8 @@ void BubbleSortTest() {
     cout << SortCheck(b, true) << endl;
     //    PrintVector(c);
     cout << SortCheck(c) << endl;
+    //    PrintVector(d);
+    cout << SortCheck(d) << endl;
 }
 
 void MergeSortTest() {
