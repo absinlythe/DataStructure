@@ -24,7 +24,7 @@ int main(int argc, const char * argv[]) {
     
 //    InsertSortTest();
     
-//    HeapSortTest();
+    HeapSortTest();
     
 //    SelectionSortTest();
     
@@ -32,7 +32,7 @@ int main(int argc, const char * argv[]) {
     
 //    MergeSortTest();
     
-    CountingSortTest();
+//    CountingSortTest();
     
 #ifdef _MSC_VER
 	system("pause");

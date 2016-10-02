@@ -131,7 +131,7 @@ void InsertSortTest() {
 }
 
 void HeapSortTest() {
-    const int length = 100000;
+    const int length = 10000000;
     
     vector<double> a;
     vector<double> b;
@@ -148,7 +148,10 @@ void HeapSortTest() {
     HeapSort(a);
     cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
     
-    HeapSort(b);
+    st = clock();
+    HeapSort(b, true);
+    cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
+    
     HeapSort(c);
     
     //    PrintVector(a);
