@@ -15,6 +15,7 @@
 #include "selection_sort.hpp"
 #include "bubble_sort.hpp"
 #include "merge_sort.hpp"
+#include "counting_sort.hpp"
 
 using namespace std;
 
@@ -236,6 +237,35 @@ void MergeSortTest() {
     
     MergeSort<double, greater<double> >(b);
     MergeSort(c);
+    
+    //    PrintVector(a);
+    cout << SortCheck(a) << endl;
+    //    PrintVector(b);
+    cout << SortCheck(b, true) << endl;
+    //    PrintVector(c);
+    cout << SortCheck(c) << endl;
+}
+
+void CountingSortTest() {
+    const int length = 1000000;
+    
+    vector<long long> a;
+    vector<long> b;
+    vector<int> c;
+    
+    for (int i = 0; i != length; ++i) {
+        a.push_back((rand() % 100000));
+        b.push_back((rand() % 10000) - 5000);
+        c.push_back((rand() % 1000));
+    }
+    
+    time_t st = clock();
+    
+    CountingSort(a);
+    cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
+    
+    CountingSort(b, true);
+    CountingSort(c);
     
     //    PrintVector(a);
     cout << SortCheck(a) << endl;

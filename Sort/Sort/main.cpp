@@ -30,7 +30,9 @@ int main(int argc, const char * argv[]) {
     
 //    BubbleSortTest();
     
-    MergeSortTest();
+//    MergeSortTest();
+    
+    CountingSortTest();
     
 #ifdef _MSC_VER
 	system("pause");
