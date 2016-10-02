@@ -10,7 +10,6 @@
 #define selection_sort_hpp
 
 #include <vector>
-#include <functional>
 
 template <typename T, typename Compare = std::less<T> >
 void SelectionSort(std::vector<T> &a) {

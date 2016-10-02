@@ -17,37 +17,43 @@
 
 #define RIGHT(i) ((i << 1) + 2)
 
-template <typename T>
-void MaxHeapify(std::vector<T> &a, const size_t index, const size_t heap_size) {
+template <typename T, typename Compare>
+void Heapify(std::vector<T> &a, const size_t index, const size_t heap_size, Compare _comp) {
     size_t l = LEFT(index);
     size_t r = RIGHT(index);
     size_t largest = index + 1;
     
-    largest = (l < heap_size && a[l] > a[index]) ? l : index;
-    largest = (r < heap_size && a[r] > a[largest]) ? r : largest;
+    largest = (l < heap_size && _comp(a[index], a[l])) ? l : index;
+    largest = (r < heap_size && _comp(a[largest], a[r])) ? r : largest;
 
     if (largest != index) {
         std::swap(a[index], a[largest]);
-        MaxHeapify(a, largest, heap_size);
+        Heapify(a, largest, heap_size, _comp);
     }
 }
 
-template <typename T>
-void BuildMaxHeap(std::vector<T> &a) {
+template <typename T, typename Compare>
+void BuildMaxHeap(std::vector<T> &a, Compare _comp) {
     for (auto i = (a.size() >> 1) - 1; i >= 1; --i) {
-        MaxHeapify(a, i, a.size());
+        Heapify(a, i, a.size(), _comp);
     }
-    MaxHeapify(a, 0, a.size());
+    Heapify(a, 0, a.size(), _comp);
 }
 
-template <typename T>
+template <typename T, typename Compare = std::less<T> >
 void HeapSort(std::vector<T> &a) {
-    BuildMaxHeap(a);
+    if (a.size() <= 1) return;
     
+    Compare _comp;
+    
+    // 建堆
+    BuildMaxHeap(a, _comp);
+    
+    // 从尾至头依次调整堆
     for (auto i = a.size() - 1; i >= 1; --i) {
         std::swap(a[0], a[i]);
         
-        MaxHeapify(a, 0, i);
+        Heapify(a, 0, i, _comp);
     }
 }
 

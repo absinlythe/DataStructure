@@ -10,7 +10,6 @@
 #define insert_sort_hpp
 
 #include <vector>
-#include <functional>
 
 // 插入排序（用于桶排序）
 template <typename T>

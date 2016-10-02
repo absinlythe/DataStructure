@@ -10,7 +10,6 @@
 #define bucket_sort_hpp
 
 #include <vector>
-#include <thread>
 
 #include "insert_sort.hpp"
 #include "utils.hpp"

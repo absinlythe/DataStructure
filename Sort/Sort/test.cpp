@@ -21,7 +21,7 @@ void BucketSortTest() {
     vector<double> a;
     vector<double> b;
     vector<int> c;
-    const int length = 100000;
+    const int length = 10000;
     
     for (int i = 0; i != length; ++i) {
         a.push_back((rand() % 10000) / 10000.0 - 0.5);
@@ -33,10 +33,10 @@ void BucketSortTest() {
     vector<int> e(c);
     
     time_t st = clock();
-    //    BucketSort(a);
-    //    PrintVector(a);
-    //    cout << " cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
-    //    cout << SortCheck(a) << endl;
+    BucketSort(a);
+//    PrintVector(a);
+    cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
+    cout << SortCheck(a) << endl;
     
     //    st = clock();
     //    BucketSort(b, true, 100);
@@ -87,7 +87,7 @@ void QuickSortTest() {
     cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
     
     QuickSort(d, 0, d.size() - 1);
-    RandomizedQuickSort(b, 0, b.size() - 1);
+    RandomizedQuickSort<double, greater<double> >(b, 0, b.size() - 1);
     
     st = clock();
     HoareQuickSort(c, 0, c.size() - 1);
@@ -96,7 +96,7 @@ void QuickSortTest() {
 	//    PrintVector(a);
 	cout << SortCheck(a) << endl;
 	//    PrintVector(b);
-	cout << SortCheck(b) << endl;
+	cout << SortCheck(b, true) << endl;
 	//    PrintVector(c);
 	cout << SortCheck(c) << endl;
 	//    PrintVector(d);
@@ -129,7 +129,7 @@ void InsertSortTest() {
 }
 
 void HeapSortTest() {
-    const int length = 10000000;
+    const int length = 100000;
     
     vector<double> a;
     vector<double> b;

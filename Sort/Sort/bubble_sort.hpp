@@ -10,7 +10,6 @@
 #define bubble_sort_hpp
 
 #include <vector>
-#include <functional>
 
 template <typename T, typename Compare = std::less<T> >
 void BubbleSort(std::vector<T> &a) {
