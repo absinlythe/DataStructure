@@ -52,12 +52,10 @@ void InsertionSortIterator(std::vector<T> &a) {
     }
 }
 
-// 插入排序（下标版）
+// 插入排序（下标非递归版）
 template <typename T, typename Compare = std::less<T> >
-void InsertionSort(std::vector<T> &a, const bool recursive = false) {
+void _InsertionSort(std::vector<T> &a, Compare _comp) {
     if (a.size() <= 1) return;
-    
-    Compare _comp;
     
     for (auto j = 1; j != a.size(); ++j) {
         T key = a[j];
@@ -70,6 +68,41 @@ void InsertionSort(std::vector<T> &a, const bool recursive = false) {
         }
         
         a[i] = key;
+    }
+}
+
+// 插入排序（下标递归版）
+// 注意：当数组长度过大时，会出现栈溢出
+template <typename T, typename Compare = std::less<T> >
+void _InsertionSortRecursive(std::vector<T> &a, size_t index, Compare _comp) {
+    if (a.size() <= 1 || index == 0) return;
+    
+    _InsertionSortRecursive(a, index - 1, _comp);
+    
+    T key = a[index];
+    size_t i = index;
+    
+    while (i > 0 && _comp(key, a[i - 1])) {
+        a[i] = a[i - 1];
+            
+        --i;
+    }
+        
+    a[i] = key;
+}
+
+// 插入排序（下标版）
+// 包括递归版和非递归版
+template <typename T, typename Compare = std::less<T> >
+void InsertionSort(std::vector<T> &a, const bool recursive = false) {
+    if (a.size() <= 1) return;
+    
+    Compare _comp;
+    
+    if (recursive) {
+        _InsertionSortRecursive(a, a.size() - 1, _comp);
+    } else {
+        _InsertionSort(a, _comp);
     }
 }
 

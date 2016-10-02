@@ -107,7 +107,7 @@ void QuickSortTest() {
 }
 
 void InsertSortTest() {
-    const int length = 50000;
+    const int length = 10000;
     
     vector<double> a;
     vector<double> b;
@@ -126,10 +126,12 @@ void InsertSortTest() {
     InsertionSort(a);
     cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
     
+    InsertionSort(a);
     InsertionSort<double, greater<double> >(b);
+    cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
     
     st = clock();
-    InsertionSort(c);
+    InsertionSort(c, true);
     cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
     
     st = clock();
