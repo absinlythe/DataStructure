@@ -76,6 +76,7 @@ void QuickSort(std::vector<T> &a, const size_t p, const size_t r) {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 // 使用Hoare方法进行快速排序
+// 注意：该方法要快于原始版本的快速排序
 template <typename T, typename Compare = std::less<T> >
 void HoareQuickSort(std::vector<T> &a, const size_t p, const size_t r) {
     if (a.size() <= 1) return;

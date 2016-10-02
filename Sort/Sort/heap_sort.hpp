@@ -76,6 +76,8 @@ void BuildMaxHeap(std::vector<T> &a, Compare _comp) {
     Heapify(a, 0, a.size(), _comp);
 }
 
+// 堆排序
+// 注意：非递归版本要快于递归版本
 template <typename T, typename Compare = std::less<T> >
 void HeapSort(std::vector<T> &a, const bool recursive = false) {
     if (a.size() <= 1) return;
