@@ -63,13 +63,13 @@
 ## 算法复杂度分析 
 #####　　各种排序的算法时间复杂度和空间复杂度比较：
 
-排序方法 | 时间复杂度（平均） | 时间复杂度（最好） | 时间复杂度（最差） | 空间复杂度 | 稳定性
-|::|::|::|::|::|
-冒泡排序 | O(n<sup>2</sup>) | O(n) | O(n<sup>2</sup>) | O(1) | 稳定
-桶排序 | O(n) | O(n) | O(nlog<sub>2</sub>n) | O(n) | 不确定
-计数排序 | O(n+k) | O(n+k) | O(n+k) | O(k) | 稳定
-堆排序 | O(nlog<sub>2</sub>n) | O(nlog<sub>2</sub>n) | O(nlog<sub>2</sub>n) | O(1) | 不稳定
-插入排序 | O(n<sup>2</sup>) | O(n) | O(n<sup>2</sup>) | O(1) | 稳定
-归并排序 | O(nlog<sub>2</sub>n) | O(nlog<sub>2</sub>n) | O(nlog<sub>2</sub>n) | O(n) | 稳定
-快速排序 | O(nlog<sub>2</sub>n) | O(nlog<sub>2</sub>n) | O(n<sup>2</sup>) | O(1) | 不稳定
-选择排序 | O(n<sup>2</sup>) | O(n<sup>2</sup>) | O(n<sup>2</sup>) | O(1) | 不稳定
+| 排序方法 | 时间复杂度（平均） | 时间复杂度（最好） | 时间复杂度（最差） | 空间复杂度 | 稳定性 |
+|:--:|:--:|:--:|:--:|:--:|:--:|
+| 冒泡排序 | O(n<sup>2</sup>) | O(n) | O(n<sup>2</sup>) | O(1) | 稳定 |
+| 桶排序 | O(n) | O(n) | O(nlog<sub>2</sub>n) | O(n) | 不确定 |
+| 计数排序 | O(n+k) | O(n+k) | O(n+k) | O(k) | 稳定 |
+| 堆排序 | O(nlog<sub>2</sub>n) | O(nlog<sub>2</sub>n) | O(nlog<sub>2</sub>n) | O(1) | 不稳定 |
+| 插入排序 | O(n<sup>2</sup>) | O(n) | O(n<sup>2</sup>) | O(1) | 稳定 |
+| 归并排序 | O(nlog<sub>2</sub>n) | O(nlog<sub>2</sub>n) | O(nlog<sub>2</sub>n) | O(n) | 稳定 |
+| 快速排序 | O(nlog<sub>2</sub>n) | O(nlog<sub>2</sub>n) | O(n<sup>2</sup>) | O(1) | 不稳定 |
+| 选择排序 | O(n<sup>2</sup>) | O(n<sup>2</sup>) | O(n<sup>2</sup>) | O(1) | 不稳定 |
