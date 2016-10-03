@@ -36,6 +36,8 @@ int main(int argc, const char * argv[]) {
     
 //    ShellSortTest();
     
+//    RadixSortTest();
+    
     SortTimeTest();
     
 #ifdef _MSC_VER

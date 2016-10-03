@@ -13,6 +13,8 @@
 
 template <typename T, typename Compare = std::less<T> >
 void ShellSort(std::vector<T> &a) {
+    if (a.size() <= 1) return;
+    
     size_t gap, i, j;
     T key;
     Compare _comp;

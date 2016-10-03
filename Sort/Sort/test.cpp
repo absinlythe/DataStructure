@@ -17,6 +17,7 @@
 #include "merge_sort.hpp"
 #include "counting_sort.hpp"
 #include "shell_sort.hpp"
+#include "radix_sort.hpp"
 
 using namespace std;
 
@@ -364,6 +365,45 @@ void ShellSortTest() {
     cout << SortCheck(d) << endl;
 }
 
+void RadixSortTest() {
+    const int length = 1000000;
+    
+    vector<int> a;
+    vector<long> b;
+    vector<long long> c;
+    vector<int> d { 13, 19, 9, 5, 12, 8, 7, 4, 21, 2, 6, 11, 6 };
+    
+    for (int i = 0; i != length; ++i) {
+        a.push_back((rand() % 100));
+        b.push_back((rand() % 10000));
+        c.push_back((rand() % 1000000));
+    }
+    
+    time_t st = clock();
+    
+    RadixSort(a, 2);
+    cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
+    
+    st = clock();
+    RadixSort(b, 4);
+    cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
+    
+    st = clock();
+    RadixSort(c, 6, true);
+    cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
+    
+    RadixSort(d, 2);
+    
+    //    PrintVector(a);
+    cout << SortCheck(a) << endl;
+    //    PrintVector(b);
+    cout << SortCheck(b) << endl;
+    //    PrintVector(c);
+    cout << SortCheck(c, true) << endl;
+    //    PrintVector(d);
+    cout << SortCheck(d) << endl;
+}
+
 void SortTimeTest() {
     const int length = 10000;
     const int times = 100;
@@ -373,7 +413,7 @@ void SortTimeTest() {
     time_t st = clock();
     for (int i = 0; i != times; ++i) {
         for (int j = 0; j != length; ++j) {
-            a.push_back((rand() % 1000000));
+            a.push_back((rand() % 1000));
         }
         
 //        BubbleSort(a);
@@ -390,6 +430,7 @@ void SortTimeTest() {
 //        QuickSort(a, 0, a.size() - 1);
 //        RandomizedQuickSort(a, 0, a.size() - 1);
 //        HoareQuickSort(a, 0, a.size() - 1);
+//        RadixSort(a, 7);
 //        SelectionSort(a);
 //        SelectionSort(a, true);
 //        ShellSort(a);

@@ -39,6 +39,7 @@
 		827AB23B1DA0A57700FF3AF5 /* merge_sort.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = merge_sort.hpp; sourceTree = "<group>"; };
 		827AB2401DA0D46700FF3AF5 /* counting_sort.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = counting_sort.hpp; sourceTree = "<group>"; };
 		82F936CE1DA24F9C002BE98A /* shell_sort.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = shell_sort.hpp; sourceTree = "<group>"; };
+		82F936D31DA27E7A002BE98A /* radix_sort.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = radix_sort.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +91,7 @@
 				8236C6B21D9E69B5008168CC /* main.cpp */,
 				82650E661D9E6A800081827D /* Utils */,
 				82650E6F1D9E6B770081827D /* Test */,
+				82F936D01DA27E48002BE98A /* RadixSort */,
 				82F936CC1DA24F6A002BE98A /* ShellSort */,
 				827AB23D1DA0D3BC00FF3AF5 /* CountingSort */,
 				827AB2391DA0A4EB00FF3AF5 /* MergeSort */,
@@ -175,6 +177,14 @@
 				82F936CE1DA24F9C002BE98A /* shell_sort.hpp */,
 			);
 			name = ShellSort;
+			sourceTree = "<group>";
+		};
+		82F936D01DA27E48002BE98A /* RadixSort */ = {
+			isa = PBXGroup;
+			children = (
+				82F936D31DA27E7A002BE98A /* radix_sort.hpp */,
+			);
+			name = RadixSort;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
