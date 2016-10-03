@@ -28,11 +28,13 @@ int main(int argc, const char * argv[]) {
     
 //    SelectionSortTest();
     
-    BubbleSortTest();
+//    BubbleSortTest();
     
 //    MergeSortTest();
     
 //    CountingSortTest();
+    
+    ShellSortTest();
     
 #ifdef _MSC_VER
 	system("pause");

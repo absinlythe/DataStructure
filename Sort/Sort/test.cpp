@@ -16,6 +16,7 @@
 #include "bubble_sort.hpp"
 #include "merge_sort.hpp"
 #include "counting_sort.hpp"
+#include "shell_sort.hpp"
 
 using namespace std;
 
@@ -322,4 +323,43 @@ void CountingSortTest() {
     cout << SortCheck(b, true) << endl;
     //    PrintVector(c);
     cout << SortCheck(c) << endl;
+}
+
+void ShellSortTest() {
+    const int length = 100000;
+    
+    vector<double> a;
+    vector<double> b;
+    vector<int> c;
+    vector<int> d { 13, 19, 9, 5, 12, 8, 7, 4, 21, 2, 6, 11, 6 };
+    
+    for (int i = 0; i != length; ++i) {
+        a.push_back((rand() % 10000) / 10000.0 - 0.5);
+        b.push_back((rand() % 10000) / 100.0);
+        c.push_back((rand() % 100000));
+    }
+    
+    time_t st = clock();
+    
+    ShellSort(a);
+    cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
+    
+    st = clock();
+    ShellSort<double, greater<double> >(b);
+    cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
+    
+    st = clock();
+    ShellSort(c);
+    cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
+    
+    ShellSort(d);
+    
+    //    PrintVector(a);
+    cout << SortCheck(a) << endl;
+    //    PrintVector(b);
+    cout << SortCheck(b, true) << endl;
+    //    PrintVector(c);
+    cout << SortCheck(c) << endl;
+    //    PrintVector(d);
+    cout << SortCheck(d) << endl;
 }

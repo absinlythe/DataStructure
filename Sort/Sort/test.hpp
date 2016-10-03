@@ -25,4 +25,6 @@ void MergeSortTest();
 
 void CountingSortTest();
 
+void ShellSortTest();
+
 #endif /* test_hpp */
