@@ -34,7 +34,9 @@ int main(int argc, const char * argv[]) {
     
 //    CountingSortTest();
     
-    ShellSortTest();
+//    ShellSortTest();
+    
+    SortTimeTest();
     
 #ifdef _MSC_VER
 	system("pause");

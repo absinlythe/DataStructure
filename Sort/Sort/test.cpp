@@ -363,3 +363,23 @@ void ShellSortTest() {
     //    PrintVector(d);
     cout << SortCheck(d) << endl;
 }
+
+void SortTimeTest() {
+    const int length = 10000;
+    const int times = 100;
+    
+    vector<int> a;
+    
+    time_t st = clock();
+    for (int i = 0; i != times; ++i) {
+        for (int j = 0; j != length; ++j) {
+            a.push_back((rand() % 100000));
+        }
+        
+        ShellSort(a);
+        
+        a.clear();
+    }
+    
+    cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC / times << endl;
+}

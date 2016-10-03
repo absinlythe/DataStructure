@@ -27,4 +27,6 @@ void CountingSortTest();
 
 void ShellSortTest();
 
+void SortTimeTest();
+
 #endif /* test_hpp */
