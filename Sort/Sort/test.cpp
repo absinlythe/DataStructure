@@ -373,13 +373,29 @@ void SortTimeTest() {
     time_t st = clock();
     for (int i = 0; i != times; ++i) {
         for (int j = 0; j != length; ++j) {
-            a.push_back((rand() % 100000));
+            a.push_back((rand() % 1000000));
         }
         
-        ShellSort(a);
+//        BubbleSort(a);
+//        BubbleSort(a, true);
+//        BubbleSortImprove(a);
+//        BucketSort(a, false, 1000);
+//        CountingSort(a);
+//        HeapSort(a);
+//        HeapSort(a, true);
+//        InsertionSort(a);
+//        InsertionSort(a, true);
+//        InsertionSortIterator(a);
+//        MergeSort(a);
+//        QuickSort(a, 0, a.size() - 1);
+//        RandomizedQuickSort(a, 0, a.size() - 1);
+//        HoareQuickSort(a, 0, a.size() - 1);
+//        SelectionSort(a);
+//        SelectionSort(a, true);
+//        ShellSort(a);
         
         a.clear();
     }
     
-    cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC / times << endl;
+    cout << static_cast<double>(clock() - st) / CLOCKS_PER_SEC / times << endl;
 }

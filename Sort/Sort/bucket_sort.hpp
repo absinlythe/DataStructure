@@ -42,7 +42,7 @@ void BucketSort(std::vector<T> &a, const bool reverse = false, const int bucket_
     
     // 往桶中填充数据
     std::pair<T, T> max_min = GetMaxMin(a);
-    T step = (max_min.second - max_min.first) / bucket_num;
+    T step = (max_min.second - max_min.first + 1) / bucket_num;
     for (typename std::vector<T>::size_type i = 0; i != a.size(); ++i) {
         int index = static_cast<int>((a[i] - max_min.first) / step);
         if (index >= bucket_num) index = bucket_num - 1;
