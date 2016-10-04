@@ -73,12 +73,12 @@ void QuickSortTest() {
 //    vector<long> b{13, 19, 9, 5, 12, 8, 7, 4, 21, 2, 6, 11, 6};
 //    vector<double> c{13.1, 19.5, 9.9, 5.5, 12.1, 8.4, 7.6, 4.3, 21.2, 5.9, 12.1, 8.1, 2.7, 6.8, 11.9, 6.8};
     
-    const int length = 10000000;
+    const int length = 10000;
     
     vector<double> a;
     vector<double> b;
     vector<int> c;
-    vector<int> d{13};
+    vector<int> d{13, 19, 9, 5, 12, 8, 7, 4, 21, 2, 6, 11, 6};
     
     for (int i = 0; i != length; ++i) {
         a.push_back((rand() % 10000) / 10000.0 - 0.5);
@@ -91,11 +91,16 @@ void QuickSortTest() {
     QuickSort(a, 0, a.size() - 1);
     cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
     
-    QuickSort(d, 0, d.size() - 1);
+    st = clock();
     RandomizedQuickSort<double, greater<double> >(b, 0, b.size() - 1);
+    cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
     
     st = clock();
     HoareQuickSort(c, 0, c.size() - 1);
+    cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
+    
+    st = clock();
+    HoareQuickSort(d, 0, d.size() - 1);
     cout << "cost:" << static_cast<double>(clock() - st) / CLOCKS_PER_SEC << endl;
     
 	//    PrintVector(a);
@@ -434,6 +439,8 @@ void SortTimeTest() {
 //        SelectionSort(a);
 //        SelectionSort(a, true);
 //        ShellSort(a);
+        
+//        cout << SortCheck(a) << endl;
         
         a.clear();
     }
