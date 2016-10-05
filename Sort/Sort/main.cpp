@@ -16,7 +16,7 @@
 using namespace::std;
 
 int main(int argc, const char * argv[]) {
-    srand(unsigned(time(0)));
+//    srand(unsigned(time(0)));
     
 //    BucketSortTest();
     

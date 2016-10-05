@@ -413,36 +413,38 @@ void SortTimeTest() {
     const int length = 10000;
     const int times = 100;
     
-    vector<int> a;
+    vector<vector<int> > a(times, vector<int>());
+    
+    for (int i = 0; i != times; ++i) {
+        for (int j = 0; j != length; ++j) {
+            a[i].push_back((rand() % 1000));
+        }
+    }
+    
+    srand(unsigned(time(0)));
     
     time_t st = clock();
     for (int i = 0; i != times; ++i) {
-        for (int j = 0; j != length; ++j) {
-            a.push_back((rand() % 1000));
-        }
+//        BubbleSort(a[i]);
+//        BubbleSort(a[i], true);
+//        BubbleSortImprove(a[i]);
+//        BucketSort(a[i], false, 1000);
+//        CountingSort(a[i]);
+//        HeapSort(a[i]);
+//        HeapSort(a[i], true);
+//        InsertionSort(a[i]);
+//        InsertionSort(a[i], true);
+//        InsertionSortIterator(a[i]);
+//        MergeSort(a[i]);
+//        QuickSort(a[i], 0, a[i].size() - 1);
+//        RandomizedQuickSort(a[i], 0, a[i].size() - 1);
+//        HoareQuickSort(a[i], 0, a[i].size() - 1);
+//        RadixSort(a[i], 7);
+//        SelectionSort(a[i]);
+//        SelectionSort(a[i], true);
+//        ShellSort(a[i]);
         
-//        BubbleSort(a);
-//        BubbleSort(a, true);
-//        BubbleSortImprove(a);
-//        BucketSort(a, false, 1000);
-//        CountingSort(a);
-//        HeapSort(a);
-//        HeapSort(a, true);
-//        InsertionSort(a);
-//        InsertionSort(a, true);
-//        InsertionSortIterator(a);
-//        MergeSort(a);
-//        QuickSort(a, 0, a.size() - 1);
-//        RandomizedQuickSort(a, 0, a.size() - 1);
-//        HoareQuickSort(a, 0, a.size() - 1);
-//        RadixSort(a, 7);
-//        SelectionSort(a);
-//        SelectionSort(a, true);
-//        ShellSort(a);
-        
-//        cout << SortCheck(a) << endl;
-        
-        a.clear();
+//        cout << SortCheck(a[i]) << endl;
     }
     
     cout << static_cast<double>(clock() - st) / CLOCKS_PER_SEC / times << endl;
